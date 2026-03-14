@@ -1,4 +1,4 @@
-Kratak opis projekta 
+Kratak opis projekta:
 Alat za tradicionalno i agilno upravljanje softverskim projektima.
 
 Tehnologije koje su korišćene:
