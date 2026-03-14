@@ -1,6 +1,11 @@
 Kratak opis projekta 
 Alat za tradicionalno i agilno upravljanje softverskim projektima.
 
+Tehnologije koje su korišćene:
+  o Angular
+  o .Net
+Baza: MySql
+
 Zahtevane funkcionalnosti 
 Projekat je namenjen vođama timova za razvoj softvera, ali i svim ostalim učesnicima u razvoju.  
 
