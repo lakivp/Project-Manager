@@ -9,7 +9,7 @@ Baza: MySql
 Zahtevane funkcionalnosti 
 Projekat je namenjen vođama timova za razvoj softvera, ali i svim ostalim učesnicima u razvoju.  
 
-Alat treba da omogući sledeće funkcionalnosti: 
+Alat treba da omogući sledeće funkcionalnosti: <br>
 • Obavezne funkcionalnosti 
   o Upravljanje podacima o članovima tima i njihovim ulogama (globalno i po projektima). 
   o Formiranje projekata i potprojekata. 
