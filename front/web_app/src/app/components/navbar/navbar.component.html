@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<div *ngIf="!isLoginPage() && !isRegisterPage()" class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':'' ">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()"><img id="logoPoly" src="/assets/logo_white.png" width="50px" height="50px"></button>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">Polygon</div>
+        <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+            <lucide-icon class="close-icon" name="X" color="white"></lucide-icon>
+
+        </button>
+    </div>
+    <ul class="sidenav-nav" *ngIf="this.user!==undefined &&  user.idUlogeAplikacija!=1">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a *ngIf="data.label!=='Profile'" class="sidenav-nav-link" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <lucide-icon class="sidenav-link-icon" name={{data.icon}}></lucide-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label | translate}}</span>
+            </a>
+            <a (click)="this.SettingsServ.MethodForProfile(0)"  *ngIf="data.label==='Profile'" class="sidenav-nav-link" [routerLink]="[data.routeLink, this.user.id,0]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <lucide-icon class="sidenav-link-icon" name={{data.icon}}></lucide-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label | translate}}</span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item" id="logoutNav">
+            <a (click)="this.SettingsServ.MethodForProfile(0)"   class="sidenav-nav-link" [routerLink]="[navData[2]['routeLink'], this.user.id,0]"
+
+            >
+                <i class="sidenav-link-icon" id="picProfile-link" style="position: relative; left: -3px;">
+                    <img id="NovaSlikaProfilDaJa" src="{{ picture }}" style="border-radius: 50%; height:40px;width: 40px; border:2px solid white;position:relative; right:0.5px">
+                    <div style="height: 0; width: 0px">
+                        <div class="circleProf" style="position: relative; bottom: 12px; left: 23px"></div>
+                    </div>
+                </i>
+                <span id="NovaSlikaProfilDaJa2" style="position:relative; bottom:-1px" class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{this.name}}</span>
+            </a>
+        </li>
+        <li class="sidenav-nav-item" *ngFor="let data of navData1" id="picProfile"><hr><br>
+            <a class="sidenav-nav-link" (click)="logOut()" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <lucide-icon class="sidenav-link-icon" name={{data.icon}}></lucide-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label | translate}}</span>
+            </a>
+        </li>
+        
+    </ul>
+    <ul class="sidenav-nav" *ngIf="this.user!==undefined && user.idUlogeAplikacija==1">
+        
+        <li class="sidenav-nav-item" *ngFor="let data of navDataAdmin">
+            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <lucide-icon class="sidenav-link-icon" name={{data.icon}}></lucide-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label | translate}}</span>
+            </a>
+        </li>
+
+        <li class="sidenav-nav-item" *ngFor="let data of navData1" id="logoutNav"><hr><br>
+            <a class="sidenav-nav-link" (click)="logOut()" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <lucide-icon class="sidenav-link-icon" name={{data.icon}}></lucide-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label | translate}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div  @slideInOut *ngIf="this.message" style="display:flex; z-index:60; align-items: center; min-width:290px; white-space: nowrap; height:70px; background-color: white;  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; gap:1em; padding:2.3em 2em 2.3em 1em; border-radius: 20px; position:absolute; top:20px; right:22px">
+    <div class="bubble">
+        <lucide-icon name="info" color="#b5b5b5"></lucide-icon>
+       </div>
+    <div style="display:flex; flex-direction: column;">
+        <p style="margin:0; padding:0; color:red; font-size:16px; width:100%; font-weight:600">
+            New notification 
+        </p>
+        <p style="margin:0; padding:0.3em 0 0 0;font-size:17px;">
+            {{this.message.substr(0, this.message.lastIndexOf(" "))}}
+        </p>
+    </div>
+  </div>

@@ -1,0 +1,264 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<div class="newUserContainer" *ngIf="this.newUser">
+  <mat-icon class="closeIcon" (click)="close()">close</mat-icon>
+
+  <h3>{{ "insertNewUser" | translate }}</h3>
+  <form [formGroup]="newUserForm" class="newUserForm" name="userInput">
+    <div class="layout">
+      <div class="rowContainer">
+        <label [htmlFor]="'username'">{{ "username" | translate }}</label>
+        <input
+          class="detail"
+          id="username"
+          title="Username"
+          formControlName="username"
+          placeholder="{{ 'username' | translate }}"
+        />
+
+        <div
+          *ngIf="
+            newUserForm.get('username')?.invalid &&
+            (newUserForm.get('username')?.dirty ||
+              newUserForm.get('username')?.touched)
+          "
+        >
+          <p class="error-message">{{ "usernameReq" | translate }}</p>
+        </div>
+        <label [htmlFor]="'first_name'">{{ "firstName" | translate }}</label>
+        <input
+          class="detail"
+          id="first_name"
+          title="FirstName"
+          formControlName="first_name"
+          placeholder="{{ 'firstName' | translate }}"
+          required
+        />
+        <div
+          *ngIf="
+            newUserForm.get('first_name')?.invalid &&
+            (newUserForm.get('first_name')?.dirty ||
+              newUserForm.get('first_name')?.touched)
+          "
+        >
+          <p class="error-message">{{ "firstNameReq" | translate }}</p>
+        </div>
+        <label [htmlFor]="'last_name'">{{ "lastName" | translate }}</label>
+        <input
+          class="detail"
+          id="last_name"
+          title="LastName"
+          formControlName="last_name"
+          placeholder="{{ 'lastName' | translate }}"
+          required
+        />
+        <div
+          *ngIf="
+            newUserForm.get('last_name')?.invalid &&
+            (newUserForm.get('last_name')?.dirty ||
+              newUserForm.get('last_name')?.touched)
+          "
+        >
+          <p class="error-message">{{ "lastNameReq" | translate }}</p>
+        </div>
+        <label [htmlFor]="'email'">Email</label>
+        <input
+          (input)="checkEmail()"
+          class="detail"
+          id="email"
+          title="Email"
+          formControlName="email"
+          placeholder="Email"
+          type="email"
+          required
+        />
+        <div
+          *ngIf="
+            newUserForm.get('email')?.invalid &&
+            (newUserForm.get('email')?.dirty ||
+              newUserForm.get('email')?.touched)
+          "
+        >
+          <p class="error-message">{{ "invalidEmail" | translate }}</p>
+        </div>
+        <label [htmlFor]="'email'">{{ "password" | translate }}</label>
+        <input
+          class="detail"
+          id="password"
+          title="Password"
+          formControlName="password"
+          placeholder="{{ 'password' | translate }}"
+          type="password"
+          required
+        />
+        <div
+          *ngIf="
+            newUserForm.get('password')?.invalid &&
+            (newUserForm.get('password')?.dirty ||
+              newUserForm.get('password')?.touched)
+          "
+        >
+          <p class="error-message">{{ "passwordRequired" | translate }}</p>
+        </div>
+      </div>
+      <div class="rowContainer">
+        <label [htmlFor]="'phone_number'">{{ "phone" | translate }}</label>
+        <input
+          (input)="checkPhone()"
+          class="detail"
+          type="tel"
+          name="telphone"
+          id="phone_number"
+          formControlName="phone_number"
+          placeholder="888 888 8888"
+          required
+        />
+        <div
+          *ngIf="
+            newUserForm.get('phone_number')?.invalid &&
+            (newUserForm.get('phone_number')?.dirty ||
+              newUserForm.get('phone_number')?.touched)
+          "
+        >
+          <p class="error-message">{{ "invalidNumber" | translate }}</p>
+        </div>
+        <label [htmlFor]="'role'">{{ "role" | translate }}</label>
+        <ng-select
+          id="role"
+          formControlName="idUlogeAplikacija"
+          [items]="this.roles"
+        >
+        </ng-select>
+        <div
+          *ngIf="
+            newUserForm.get('idUlogeAplikacija')?.invalid &&
+            (newUserForm.get('idUlogeAplikacija')?.dirty ||
+              newUserForm.get('idUlogeAplikacija')?.touched)
+          "
+        >
+          <p class="error-message">{{ "roleRequired" | translate }}</p>
+        </div>
+        <label [htmlFor]="'specijalizacija'">{{
+          "specialisation" | translate
+        }}</label>
+        <input
+          class="detail"
+          id="specijalizacija"
+          title="Specialisation"
+          formControlName="specijalizacija"
+          placeholder="{{ 'specialisation' | translate }}"
+          required
+        />
+        <div
+          *ngIf="
+            newUserForm.get('specijalizacija')?.invalid &&
+            (newUserForm.get('specijalizacija')?.dirty ||
+              newUserForm.get('specijalizacija')?.touched)
+          "
+        >
+          <p class="error-message">{{ "specRequired" | translate }}</p>
+        </div>
+        <label [htmlFor]="'opis'">{{ "description" | translate }}</label>
+        <textarea
+          class="detail opis"
+          id="opis"
+          title="Opis"
+          formControlName="opis"
+          placeholder="{{ 'description' | translate }}"
+        ></textarea>
+      </div>
+    </div>
+    <div class="buttons">
+      <button
+        id="SaveBut"
+        type="submit"
+        class="saveBtn button"
+        (click)="onSubmit()"
+        [disabled]="newUserForm.invalid"
+        [ngStyle]="{
+          'background-color': newUserForm.invalid ? '#D9D9D9' : '#1E1E1E',
+          color: newUserForm.invalid ? '#a3a3a3' : 'white'
+        }"
+      >
+        {{ "saveChanges" | translate }}
+      </button>
+      <button
+        id="CancBut"
+        type="button"
+        class="cancelBtn button"
+        (click)="cancel()"
+      >
+        {{ "cancel" | translate }}
+      </button>
+    </div>
+  </form>
+</div>
+
+<h1 class="title">{{ "editAccessibility" | translate }}</h1>
+<div class="container">
+  <button
+    class="flex justify-center items-center gap-1 newUserBtn"
+    (click)="addNewUser()"
+  >
+    <mat-icon>add_circle</mat-icon>{{ "addUser" | translate }}
+  </button>
+  <div *ngIf="users && users.length == 1" class="noUser">
+    <p>No users to show.</p>
+  </div>
+  <table *ngIf="users && users.length > 1">
+    <thead>
+      <tr>
+        <th></th>
+        <th>{{ "user" | translate }}</th>
+        <th>{{ "username" | translate }}</th>
+        <th>{{ "role" | translate }}</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users">
+      <tr *ngIf="this.user.id != adminId">
+        <td>
+          <a [routerLink]="['/profile', user.id, 0]" class="btn">
+            <img
+              src="assets/images/externalLink.png"
+              width="24"
+              height="24"
+              class="hover-pointer"
+            />
+          </a>
+        </td>
+        <td>{{ user.ime }} {{ user.prezime }}</td>
+        <td>{{ user.username }}</td>
+        <td>
+          <ng-container [ngSwitch]="user.idUlogeAplikacija">
+            <p *ngSwitchCase="1" style="color: #dc2626">Admin</p>
+            <p *ngSwitchCase="2" style="color: #fbbf24">User</p>
+            <p *ngSwitchCase="3" style="color: #166534">Guest</p>
+            <p *ngSwitchCase="4" style="color: #0797f7">Project Manager</p>
+          </ng-container>
+        </td>
+        <td class="toggle">
+          <ng-toggle
+            (change)="handleToggleChange(user)"
+            [(ngModel)]="user.status"
+            [value]="user.status === 1 ? true : false"
+            [labels]="{ checked: 'Enabled', unchecked: 'Disabled' }"
+            [width]="90"
+            [fontColor]="{ checked: 'white', unchecked: 'black' }"
+            [color]="{ checked: '#16a34a', unchecked: '#D9D9D9' }"
+            [fontSize]="14"
+          ></ng-toggle>
+        </td>
+        <td>
+          <button [routerLink]="['/profile', user.id, 1]" class="btn">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

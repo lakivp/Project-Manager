@@ -1,0 +1,325 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\services\\implementation\\zavisnosttaskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:services\\implementation\\zavisnosttaskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\zavisnosttask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\zavisnosttask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\controllers\\zavisnosttaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:controllers\\zavisnosttaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\zavisnosttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\zavisnosttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\dtos\\ulogakorisnikprojekatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\dtos\\ulogakorisnikprojekatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\ulogaprojekat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\ulogaprojekat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\ulogeaplikacija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\ulogeaplikacija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\userresetpasstoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\userresetpasstoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\controllers\\korisnikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:controllers\\korisnikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\services\\implementation\\korisnikservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:services\\implementation\\korisnikservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\services\\implementation\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:services\\implementation\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\taskovi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\taskovi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\models\\dtos\\filtertaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:models\\dtos\\filtertaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\services\\implementation\\projekatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:services\\implementation\\projekatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\services\\implementation\\podesavanjaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:services\\implementation\\podesavanjaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|c:\\users\\jelena\\desktop\\softversko\\team-polygon\\src\\back\\api\\controllers\\projekatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A755E9D-7FB4-434A-848E-2FC363B25695}|api.csproj|solutionrelative:controllers\\projekatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ZavisnostTaskService.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\ZavisnostTaskService.cs",
+              "RelativeDocumentMoniker": "Services\\Implementation\\ZavisnostTaskService.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\ZavisnostTaskService.cs",
+              "RelativeToolTip": "Services\\Implementation\\ZavisnostTaskService.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAAAHEAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T11:49:28.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ZavisnostTaskController.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\ZavisnostTaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ZavisnostTaskController.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\ZavisnostTaskController.cs",
+              "RelativeToolTip": "Controllers\\ZavisnostTaskController.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAAAEQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T11:48:20.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ZavisnostType.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\ZavisnostType.cs",
+              "RelativeDocumentMoniker": "Models\\ZavisnostType.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\ZavisnostType.cs",
+              "RelativeToolTip": "Models\\ZavisnostType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T11:48:08.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ZavisnostTask.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\ZavisnostTask.cs",
+              "RelativeDocumentMoniker": "Models\\ZavisnostTask.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\ZavisnostTask.cs",
+              "RelativeToolTip": "Models\\ZavisnostTask.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T11:48:02.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UlogaKorisnikProjekatDto.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\Dtos\\UlogaKorisnikProjekatDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dtos\\UlogaKorisnikProjekatDto.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\Dtos\\UlogaKorisnikProjekatDto.cs",
+              "RelativeToolTip": "Models\\Dtos\\UlogaKorisnikProjekatDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:07:40.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UlogaProjekat.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\UlogaProjekat.cs",
+              "RelativeDocumentMoniker": "Models\\UlogaProjekat.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\UlogaProjekat.cs",
+              "RelativeToolTip": "Models\\UlogaProjekat.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:07:33.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserResetPassToken.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\UserResetPassToken.cs",
+              "RelativeDocumentMoniker": "Models\\UserResetPassToken.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\UserResetPassToken.cs",
+              "RelativeToolTip": "Models\\UserResetPassToken.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:07:25.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAACsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:06:24.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "KorisnikService.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\KorisnikService.cs",
+              "RelativeDocumentMoniker": "Services\\Implementation\\KorisnikService.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\KorisnikService.cs",
+              "RelativeToolTip": "Services\\Implementation\\KorisnikService.cs",
+              "ViewState": "AQIAAK0AAAAAAAAAAAAAAAsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:05:55.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TaskService.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\TaskService.cs",
+              "RelativeDocumentMoniker": "Services\\Implementation\\TaskService.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\TaskService.cs",
+              "RelativeToolTip": "Services\\Implementation\\TaskService.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T19:21:12.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UlogeAplikacija.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\UlogeAplikacija.cs",
+              "RelativeDocumentMoniker": "Models\\UlogeAplikacija.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\UlogeAplikacija.cs",
+              "RelativeToolTip": "Models\\UlogeAplikacija.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T19:20:24.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FilterTaskDto.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\Dtos\\FilterTaskDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dtos\\FilterTaskDto.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\Dtos\\FilterTaskDto.cs",
+              "RelativeToolTip": "Models\\Dtos\\FilterTaskDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T19:20:11.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AQIAAHQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T19:20:01.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ProjekatService.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\ProjekatService.cs",
+              "RelativeDocumentMoniker": "Services\\Implementation\\ProjekatService.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\ProjekatService.cs",
+              "RelativeToolTip": "Services\\Implementation\\ProjekatService.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAAAEwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T08:04:42.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "KorisnikController.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\KorisnikController.cs",
+              "RelativeDocumentMoniker": "Controllers\\KorisnikController.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\KorisnikController.cs",
+              "RelativeToolTip": "Controllers\\KorisnikController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T08:23:27.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PodesavanjaService.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\PodesavanjaService.cs",
+              "RelativeDocumentMoniker": "Services\\Implementation\\PodesavanjaService.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Services\\Implementation\\PodesavanjaService.cs",
+              "RelativeToolTip": "Services\\Implementation\\PodesavanjaService.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAABEAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T19:20:37.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Taskovi.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\Taskovi.cs",
+              "RelativeDocumentMoniker": "Models\\Taskovi.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Models\\Taskovi.cs",
+              "RelativeToolTip": "Models\\Taskovi.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T08:36:58.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaskController.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "Controllers\\TaskController.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T07:58:20.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProjekatController.cs",
+              "DocumentMoniker": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\ProjekatController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProjekatController.cs",
+              "ToolTip": "C:\\Users\\Jelena\\Desktop\\softversko\\team-polygon\\src\\back\\api\\Controllers\\ProjekatController.cs",
+              "RelativeToolTip": "Controllers\\ProjekatController.cs",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAAAJEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T08:06:00.249Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

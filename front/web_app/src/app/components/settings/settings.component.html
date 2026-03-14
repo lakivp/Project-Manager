@@ -1,0 +1,76 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> 
+    <h1 name="OuterTitle">{{'settings' |translate}}</h1>
+    <div id="tabela">
+        <div id="tabela2">
+            <h4>{{'styles' |translate}}</h4>
+            <div style="margin: 70px 0px 0px 20px" id="lan">
+                <span style="width: 200px;">
+                    <mat-icon style=" transform: scale(1.3); position:relative; top:6px; margin-right:20px">languages</mat-icon> <b >{{'languages' | translate}}</b>    
+                </span>
+                <select [(ngModel)]="this.jezikSett" (change)="changeLang($event)" >
+                    <option [selected]="lang==='en'" value="en">{{'english' |translate}}</option>
+                    <option [selected]="lang==='sr'" value="sr">{{'serbian' |translate}}</option>
+                    <option [selected]="lang==='fr'" value="fr">{{'french' |translate}}</option>
+                </select>  
+                
+            </div>
+            <div *ngIf="!isAdmin()" style="margin: 45px 0px 100px 20px" id="col"><mat-icon style=" transform: scale(1.2); position:relative; top:7px; margin-right:20px">palette</mat-icon> <b>{{'color' | translate}}</b> <br>
+
+                <div style="margin-top:20px">
+
+                    <br> <input (change)="ChangeFuncBack()" type="radio" name="radColor" [value]="1" [(ngModel)]="selectedRad"  style="scale:1.5;;margin-left:-55px; margin-right:0px">
+                                <span style="width:54px;"><i style=" margin-right:3px; margin-left:0">{{'light' | translate}}: </i></span>
+                                    <input style="float:right; margin-right:40px; background-color:#ffffff" disabled   ><br>
+                    <br> <input (change)="ChangeFuncBack()" type="radio" name="radColor" [value]="2" [(ngModel)]="selectedRad"  style="scale:1.5;;margin-left:-55px; margin-right:0px">
+                                <span style="width:54px;"><i style=" margin-right:3px; margin-left:0">{{'dark' | translate}}: </i></span>
+                                    <input style="float:right; margin-right:40px ; background-color:#000000" disabled  ><br>
+                    <br> <input (change)="ChangeFuncBack()" type="radio" name="radColor" [value]="3" [(ngModel)]="selectedRad"  style="scale:1.5;;margin-left:-55px; margin-right:0px">
+                                <span style="width:54px;"><i style=" margin-right:3px; margin-left:0">{{'warm' | translate}}: </i></span>
+                                    <input style="float:right; margin-right:40px ; background-color:#fffcda" disabled   ><br>
+                    <br> <input (change)="ChangeFuncBack()" type="radio" name="radColor" [value]="4" [(ngModel)]="selectedRad"  style="scale:1.5;;margin-left:-55px; margin-right:0px">
+                                <span style="width:54px;"><i style=" margin-right:3px; margin-left:0">{{'cold' | translate}}: </i></span>
+                                    <input style="float:right; margin-right:40px ; background-color:#a8dcff" disabled   ><br>
+
+                    <br> <input (change)="ChangeFuncBack()" type="radio" [value]="idOfCustomTheme" [(ngModel)]="selectedRad"  name="radColor"  style="scale:1.5;margin-left:-55px; margin-right:0px">
+                    <span style="width:54px;"><i style=" margin-right:3px; margin-left:0">{{'custom' | translate}} </i></span>
+                     <div style="margin-top:10px; border-top:0.5px solid  #dd4545; margin-right:40px">
+                    <br><i style="margin-left:70px;">{{'outerColor' | translate}} </i>
+                        <input  style="width:80px; float:right; "  [(colorPicker)]="colorPick" [style.background]="colorPick" (colorPickerChange)="changeColor()" [cpOutputFormat]="'hex'" />
+                    <br><br><i style=" margin-left:70px; ">{{'innerColor' | translate}} </i>
+                        <input style="width:80px; float:right; " [(colorPicker)]="colorPick2" [style.background]="colorPick2" (colorPickerChange)="changeColor2()" [cpOutputFormat]="'hex'" />
+                    <br><br><i style="margin-left:70px;">{{'menuColor' | translate}}</i>
+                        <input  style="width:80px; float:right; " [(colorPicker)]="colorPick3" [style.background]="colorPick3" (colorPickerChange)="changeColor3()" [cpOutputFormat]="'hex'" />
+                    </div>   
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div id="tabela2">
+            <h4>{{'account' |translate}}</h4>
+            <div style="margin: 70px 0px 50px 20px" id="not"><img id="picSett" class="little" (click)="ChangeNotify()" [src]="picture" style="cursor: pointer;"> <b>{{'notifications' |translate}}</b> </div>
+            <div style="margin: 0px 0px 30px 20px" id="stat"> <img id="picSett2" class="little" src="../../../assets/images/settings/status.png"> <b>{{'status' |translate}}</b> </div>
+
+            <div style="margin: 0px 0px 20px 20px; display:flex; gap:30px; align-items: center; position:relative" id="stat"><span  id="green-circle" (click)="selectStatus('green-circle')" ></span> <p style="padding:0; margin:0">{{'active' |translate}}</p> </div>
+            <div style="margin: 0px 0px 20px 20px; display:flex; gap:30px; align-items: center;" id="stat"><span  id="red-circle"  (click)="selectStatus('red-circle')"></span> <p style="padding:0; margin:0">{{'disturb' |translate}}</p> </div>
+            <div style="margin: 0px 0px 20px 20px; display:flex; gap:30px; align-items: center;" id="stat"><span  id="yellow-circle" (click)="selectStatus('yellow-circle')" ></span> <p style="padding:0; margin:0">{{'idle' |translate}}</p> </div>
+            <div style="margin: 0px 0px 20px 20px; display:flex; gap:30px; align-items: center;" id="stat"><span  id="gray-circle"  (click)="selectStatus('gray-circle')"></span> <p style="padding:0; margin:0">{{'inactive' |translate}}</p> </div>
+            
+        </div>
+
+
+        <div id="tabela2" style="border-right: none;">
+            <h4>{{'hotKeys' |translate}}</h4>
+            <div style="margin: 70px 20px 30px 20px;" id="hotkeyHome">  <mat-icon id="HideHotKeyGet" style=" transform: scale(1.5); position:relative; top:4px">home</mat-icon><mat-icon id="HideHotKeyGet2" style="display:none; transform: scale(1.5); position:relative; top:4px">person</mat-icon><input style="margin-left: 70px;" type="text" maxlength="1"  [(ngModel)]="menu">  </div>
+            <div *ngIf="!isAdmin()" style="margin: 0px 20px 30px 20px" id="hotkeyProfile"> <mat-icon style=" transform: scale(1.5); position:relative; top:4px">person</mat-icon> <input style="margin-left: 70px;" type="text" maxlength="1" [(ngModel)]="menu2"> </div>
+            <div *ngIf="!isAdmin()" style="margin: 0px 20px 30px 20px" id="hotkeyTasks">   <mat-icon style=" transform: scale(1.5); position:relative; top:4px">list</mat-icon> <input style="margin-left: 70px;" type="text" maxlength="1" [(ngModel)]="menu3"> </div>
+            <div style="margin: 0px 20px 30px 20px" id="hotkeySettings"><mat-icon style=" transform: scale(1.5); position:relative; top:4px">settings</mat-icon> <input style="margin-left: 70px;" type="text" maxlength="1" [(ngModel)]="menu4"> </div>
+            <div style="margin: 0px 20px 30px 20px" id="hotkeyLogout">  <mat-icon style=" transform: scale(1.5); position:relative; top:4px">logout</mat-icon> <input style="margin-left: 70px;" type="text" maxlength="1" [(ngModel)]="menu5"> </div>
+
+        </div>
+        <button style="margin-left: 450px; margin-top: 2em;" class="dok" (click)="save()">{{'saveChanges' |translate}}</button>
+
+    </div>

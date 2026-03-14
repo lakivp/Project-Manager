@@ -1,0 +1,49 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<div class="container" (click)="openNotifications()">
+  <mat-icon *ngIf="!notificationsOpen" class="notificationiIcon"
+    >notifications</mat-icon
+  >
+  <div class="bubble" *ngIf="this.hasUnMarked && !notificationsOpen"></div>
+  <mat-icon *ngIf="notificationsOpen" class="closeIcon">close</mat-icon>
+</div>
+
+<div *ngIf="notificationsOpen" class="notificationsContainer">
+  <div style="display:flex; justify-content: space-between; width:100%; align-items: center; margin-bottom: 1em; padding:0 1em">
+    <h4>{{ "notifications" | translate }}</h4>
+    <button style="background-color: transparent; border:none; padding:0; color:#dd4545" (click)="markAllNotificationsAsRead()">{{'markAllRead' | translate}}</button>
+  </div>
+  <div *ngIf="this.notifications.length === 0" class="noNotifications">
+    {{ "recentNotif" | translate }}
+  </div>
+  <ul>
+    <li
+      class="notifikacija"
+      *ngFor="let notification of this.notifications.slice().reverse()"
+      (mouseenter)="toggleMarkRead(notification.id)"
+      (mouseleave)="toggleMarkRead(notification.id)"
+    >
+      <div *ngIf="!notification.isRead" class="notRead"></div>
+      <p class="date">{{ notification.dateCreated.substring(0, 10) }}</p>
+
+      <p class="desc">
+        {{ notification.text }}
+      </p>
+      <mat-icon
+        (click)="deleteNotification($event, notification.id)"
+        class="trashCan"
+        >delete</mat-icon
+      >
+      <div
+        *ngIf="markAsRead[notification.id] && !notification.isRead"
+        class="markAsReadPopUp"
+        (click)="markNotificationAsRead($event, notification.id)"
+      >
+      <lucide-icon name="check-check"></lucide-icon>
+      </div>
+    </li>
+  </ul>
+</div>
+

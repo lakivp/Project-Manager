@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="modal-header">
+    <h5 class="modal-title">{{'projectParticipants' | translate}}</h5>
+    <button
+      style="background-color: transparent; border: none"
+      (click)="close()"
+    >
+      <lucide-angular color="gray" name="X"></lucide-angular>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>{{'name' | translate}}</th>
+          <th>{{'username' | translate}}</th>
+          <th>{{'role' | translate}}</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let participant of participants">
+          <td>
+            <img
+              src="{{ participant.slika }}"
+              alt="Participant Image"
+              style="
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                cursor:pointer;
+              "
+              [routerLink]="['/profile', participant['id'],0]"
+            />
+            
+            <div style="height:0; width:0"><div style="position:relative;bottom:13px;left:22px" [ngStyle]="{backgroundColor:participant['status']}" class="circle" ></div></div>
+          </td>
+          <td style="font-size: 18px">
+            {{ participant.ime }} {{ participant.prezime }}
+          </td>
+          <td style="font-size: 18px">{{ participant.username }}</td>
+          <td style="font-size: 18px">{{ participant.uloga }}</td>
+          <td style="font-size: 18px">{{ participant.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

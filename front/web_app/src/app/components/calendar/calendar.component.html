@@ -1,0 +1,86 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<div class="cont">
+  <p-calendar
+    class="w-full h-full"
+    [(ngModel)]="date"
+    [inline]="true"
+    [showWeek]="false"
+  >
+    <ng-template pTemplate="date" let-date>
+      <span
+        *ngIf="this.projectsYes"
+        (click)="showPopup(date)"
+        [ngStyle]="{
+          backgroundColor: isSpecialDate(date) ? 'pink' : 'inherit',
+          width: '33px',
+          height: '33px',
+          position: 'relative',
+          paddingTop: '7px',
+          paddingLeft: date.day < 10 ? '12px' : '8.5px'
+        }"
+        style="border-radius: 50%"
+        >{{ date.day }}</span
+      >
+      <span
+        *ngIf="!this.projectsYes"
+        (click)="showPopup2(date)"
+        [ngStyle]="{
+          backgroundColor: isSpecialDate2(date) ? 'lightblue' : 'inherit',
+          width: '30px',
+          height: '30px',
+          position: 'relative',
+          paddingTop: '5px',
+          paddingLeft: date.day < 10 ? '12px' : '7px'
+        }"
+        style="border-radius: 50%"
+        >{{ date.day }}</span
+      >
+    </ng-template>
+  </p-calendar>
+</div>
+<div
+  *ngIf="popupVisible"
+  [style.left.px]="popupPositionX"
+  [style.top.px]="popupPositionY"
+  class="popup"
+>
+  <h3 *ngIf="this.projectsYes">
+    {{'projects' | translate}}:
+    <mat-icon
+      (click)="hidePopup()"
+      style="cursor: pointer; float: right; position: relative; top: 5px; scale:1.5"
+      fontIcon="close"
+    ></mat-icon
+    >
+  </h3>
+  <h3 *ngIf="!this.projectsYes">
+    {{'tasks' | translate}}:
+    <mat-icon
+      (click)="hidePopup()"
+      style="cursor: pointer; float: right; position: relative; top: 5px; scale:1.5"
+      fontIcon="close"
+    ></mat-icon
+    >
+  </h3>
+  <hr />
+  <div *ngFor="let par of this.projectsAll">
+    <i
+      *ngIf="this.projectsYes"
+      style="text-decoration: underline; color: purple; cursor: pointer"
+      [routerLink]="['/projectView', par[0]]"
+      >{{ par[1] }}</i
+    >
+  </div>
+  <div *ngFor="let par of this.tasksAll">
+    <i
+      *ngIf="!this.projectsYes"
+      style="text-decoration: underline; color: rgb(255, 0, 0); cursor: pointer"
+      [routerLink]="['/taskDescription', { taskId: par[0] }]"
+      >{{ par[1] }}</i
+    >
+  </div>
+</div>

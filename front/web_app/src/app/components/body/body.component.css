@@ -1,0 +1,22 @@
+.body-trimmed {
+  width: calc(100% - 8rem);
+  height: 100%;
+  margin-left: 8rem;
+}
+
+.body-md-screen {
+  width: calc(100% - 5rem);
+  height: 100%;
+  margin-left: 5rem;
+  /* padding-left: 90px; */
+}
+.bubble {
+  position: absolute;
+  top: 26px;
+  left: 17px;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,66 @@
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+/* Stil kursora za skupljenu šaku kada se slika stisne */
+.hover-pointer:active {
+  cursor: grabbing;
+}
+
+.ucesnici {
+  background-color: white;
+  padding: 5px;
+  width: 380px;
+  position: absolute;
+  display: flex;
+  border-radius: 0.625rem;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  height: 37px;
+  top: 100px; /* Promijenite ovu vrijednost prema potrebi */
+}
+.external-link {
+  margin-left: auto;
+}
+th,
+td {
+  margin-left: 45px;
+  padding-left: 20px;
+}
+.modal-dialog {
+  position: absolute;
+  left: 25%;
+  top: 25%;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  border-radius: 8px;
+  width: 1000px;
+  padding: 1em 2em 1em 2em;
+  margin-bottom: 1em;
+  background-color: white;
+  margin-top: 2em;
+  position: absolute;
+  top: 35%;
+}
+
+.modal-body {
+  overflow-y: auto;
+  max-height: 300px;
+}
+.circle {
+  width: 20px; /* Adjust width and height to change the size of the circle */
+  height: 20px;
+
+  border-radius: 50%; /* This creates the circle shape */
+  border: 2px solid white;
+}

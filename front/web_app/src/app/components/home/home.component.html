@@ -1,0 +1,252 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="margin: auto"
+>
+  <mat-spinner
+    *ngIf="this.spinner"
+    color="warn"
+    style="position: absolute; top: 400px; left: 940px; z-index: 40"
+  ></mat-spinner>
+  <div class="modal-dialog">
+    <div
+      class="modal-content"
+      style="float: center; position: relative; width: 900px; right: 150px"
+    >
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">
+          {{ "createNewProject" | translate }}:
+        </h3>
+        <br />
+      </div>
+      <div class="modal-body">
+          <h5>{{ "projectName" | translate }}</h5>
+          <br /><br />
+          <input
+            type="text"
+            id="newProjectName"
+            [(ngModel)]="projectName"
+            #projectNameInput="ngModel"
+            (input)="checkName($event, projectNameInput)"
+          />
+          <br> <br>
+          <div
+            *ngIf="
+              (projectNameInput.invalid &&
+                (projectNameInput.dirty || projectNameInput.touched)) ||
+              (formSubmitted && !projectName)
+            "
+          >
+            <p class="error-message text-red-600 p-0 m-0">
+              {{ "projectRequired" | translate }}
+            </p>
+          </div>
+          <br>
+          <div style="position: relative">
+          <h5>{{ "priority" | translate }}</h5>
+          <br /><br />
+          <div style="color: red">
+            <input
+              [checked]="true"
+              type="radio"
+              name="priorityRadioValue"
+              value="High"
+              class="rad"
+              style="background-color: red"
+              [(ngModel)]="priority"
+            />
+            {{ "high" | translate }}
+          </div>
+          <div style="color: rgb(255, 183, 0)">
+            <input
+              type="radio"
+              name="priorityRadioValue"
+              value="Medium"
+              class="rad"
+              style="background-color: yellow"
+              [(ngModel)]="priority"
+            />
+            {{ "medium" | translate }}
+          </div>
+          <div style="color: green">
+            <input
+              type="radio"
+              name="priorityRadioValue"
+              value="Low"
+              class="rad"
+              style="background-color: green"
+              [(ngModel)]="priority"
+            />
+            {{ "low" | translate }}
+          </div>
+          <div *ngIf="formSubmitted && !priority" style="color: red; margin-top: 20px; margin-bottom: 10px;">
+            <p class="error-message text-red-600 p-0 m-0">
+              {{ "selectPriority" | translate }}
+            </p>
+          </div>
+        </div>
+        <br />
+        <h5>{{ "projectDescription" | translate }}</h5>
+        <br /><br />
+        <div class="editor">
+          <ngx-editor-menu
+            
+            [editor]="editor"
+            [toolbar]="toolbar"
+            [style]="{ color: 'black' }"
+            id="newProjectDesc"
+          >
+          </ngx-editor-menu>
+          <ngx-editor [editor]="editor" [(ngModel)]="opis"> </ngx-editor>
+        </div>
+        <br /><br /><br />
+        <div style="float: left">
+          <h5>{{ "startDate" | translate }}</h5>
+          <div *ngIf="formSubmitted && (!dateBeginning)" style="color: red; margin-top: 15px;">
+            <p class="error-message text-red-600 p-0 m-0">
+              {{ 'chooseStartingDate' | translate}}
+            </p>
+          </div>
+        </div>
+        <div style="position: relative; float: right">
+          <h5>{{ "endDate" | translate }}</h5>
+          <p-calendar
+            [(ngModel)]="dateBeginning"
+            dateFormat="dd.mm.yy"
+            id="gorDateP"
+           
+          ></p-calendar>
+          <p-calendar
+          id="finalDateRight"
+          [(ngModel)]="dateEnd"
+          dateFormat="dd.mm.yy"
+          ></p-calendar>
+          <span style="width: 0px; height: 0px;"><div *ngIf="formSubmitted && (!dateEnd)" style="color: red; position: relative; left: 187.5px; margin-top: 15px;">
+            <p class="error-message text-red-600 p-0 m-0">
+                {{ 'chooseEndDate' | translate}}
+            </p>
+          </div></span>
+          <div
+              *ngIf="dateEnd && dateBeginning && dateEnd < dateBeginning"
+              style="color: red; max-width: min-content; white-space: nowrap; position: relative; left: 187.5px; margin-top: 15px;"
+            >
+              <p class="error-message text-red-600 p-0 m-0">
+                {{'endDateUpozorenje' | translate}}
+              </p>
+            </div>
+        </div>
+        <br /><br /><br /><br /><br />
+        <button id="addProject" (click)="CreateProjectNew()"  data-bs-toggle="modal"
+        data-bs-target="#exampleModal2">
+          {{ "createProject" | translate }}</button
+        ><button
+          id="cancel"
+          type="button"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetForm()"
+        >
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="HomeThisDiv" style="position:relative">
+  <h3 id="ForColorId">{{ "welcome" | translate }}, {{ username }}</h3>
+  <button
+    *ngIf="isProjectManager"
+    id="buttonforCreatiing"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal2"
+  >
+    {{ "createProject" | translate }}
+  </button>
+
+  <input
+    type="hidden"
+    id="IdZaUseraPrijavljenogRadiUzimanjaProjekataTo"
+    value="{{ id }}"
+  />
+
+  <div style="margin: auto; width: 1400px; height: 400px; margin-top: 20px">
+    <div id="iznad1" [class.fade-out]=>
+          <div style="width: 300px"><app-chart #chartCompRef></app-chart></div>
+
+          <div style="position: absolute; top: 450px; left: 50px">
+            <div style="height: 0px; width: 0px">
+              <button
+                id="button22"
+                style="
+                  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+                    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+                  border-top-left-radius: 30px;
+                  border-bottom-left-radius: 30px;
+                  border: none;
+                  padding-left: 15px;
+                "
+                class="settButtonChart"
+                (click)="invokeChangeTasksProject()"
+              >
+                <span style="z-index: 1">{{'project' | translate}}</span>
+              </button>
+            </div>
+            <div style="height: 0px; width: 0px; position: relative; left: 91px">
+              <button
+                id="button22"
+                style="
+                  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+                    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+                  border-top-right-radius: 30px;
+                  border-bottom-right-radius: 30px;
+                  border: none;
+                  padding-left: 20px;
+                  width: 80px;
+                "
+                class="settButtonChart"
+                (click)="invokeChangeTasksProject()"
+              >
+                <span style="z-index: 5">{{'task' | translate}}</span>
+              </button>
+            </div>
+          </div>
+      
+
+          <div style="width: 300px">
+            <div class="projects">
+              <div class="progCompl">
+                <lucide-icon name="file-pen-line" size="40"></lucide-icon>
+                <div style="width: 150px">
+                  <h2 *ngIf="this.isProjectRight">{{ neZavrseni }}</h2> <h2 *ngIf="!this.isProjectRight">{{ neZavrseni2 }}</h2>
+                  <b *ngIf="this.isProjectRight" style="color: red; text-shadow: -1px -1px 0 white, 1px -1px 0 white , -1px 1px 0 white, 1px 1px 0 white;">{{ "projectProgress" | translate }}</b>
+                  <b *ngIf="!this.isProjectRight" style="color: red; text-shadow: -1px -1px 0 white, 1px -1px 0 white , -1px 1px 0 white, 1px 1px 0 white;">{{'tasksProgress' | translate}}</b>
+
+                </div>
+              </div>
+              <div class="progCompl">
+                <lucide-icon name="file-check" size="40"></lucide-icon>
+                <div style="width: 150px">
+                  <h2 *ngIf="this.isProjectRight">{{ zavrseni }}</h2><h2 *ngIf="!this.isProjectRight">{{ zavrseni2 }}</h2>
+                  <b *ngIf="this.isProjectRight" style="color: rgb(0, 114, 0);   text-shadow: -1px -1px 0 white, 1px -1px 0 white,-1px 1px 0 white,1px 1px 0 white;">{{'completedProject' | translate}}</b>
+                  <b *ngIf="!this.isProjectRight" style="color: rgb(0, 114, 0);   text-shadow: -1px -1px 0 white, 1px -1px 0 white,-1px 1px 0 white,1px 1px 0 white;">{{'completedTasks' | translate}}</b>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="width: 300px; float: right"><app-calendar #calendarComponentRef></app-calendar></div>
+          <br>
+    </div>
+    <app-project-table #projectTableComponentRef></app-project-table>
+  </div>
+</div>

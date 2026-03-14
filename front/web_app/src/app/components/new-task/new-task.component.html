@@ -1,0 +1,263 @@
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="margin: auto"
+>
+  <mat-spinner
+    *ngIf="this.spinner"
+    color="warn"
+    style="position: absolute; top: 400px; left: 940px; z-index: 40"
+  ></mat-spinner>
+  <div class="modal-dialog">
+    <div
+      class="modal-content"
+      style="float: center; position: relative; width: 900px; right: 150px"
+    >
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">
+          {{ "createNewTask" | translate }}:
+        </h3>
+        <br />
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 50px; height: 250px">
+          <div id="levo">
+            <h5>{{ "taskName" | translate }}</h5>
+            <br /><br />
+            <input
+              type="text"
+              id="newProjectName"
+              [(ngModel)]="projectName"
+              #projectNameInput="ngModel"
+              (input)="checkName($event, projectNameInput)"
+            />
+            <br /><br />
+            <div
+              *ngIf="
+                (projectNameInput.invalid &&
+                  (projectNameInput.dirty || projectNameInput.touched)) ||
+                (formSubmitted && !projectName)
+              "
+            >
+              <p class="error-message text-red-600 p-0 m-0">
+                {{ 'taskNameRequired' | translate}}
+              </p>
+            </div>
+            <br />
+            <div style="position: relative">
+              <h5>{{ "priority" | translate }}</h5>
+              <br /><br />
+              <div style="color: red">
+                <input
+                  [checked]="true"
+                  type="radio"
+                  name="priorityRadioValue"
+                  value="High"
+                  class="rad"
+                  style="background-color: red"
+                  [(ngModel)]="priority"
+                />
+                {{ "high" | translate }}
+              </div>
+              <div style="color: rgb(255, 183, 0)">
+                <input
+                  type="radio"
+                  name="priorityRadioValue"
+                  value="Medium"
+                  class="rad"
+                  style="background-color: yellow"
+                  [(ngModel)]="priority"
+                />
+                {{ "medium" | translate }}
+              </div>
+              <div style="color: green">
+                <input
+                  type="radio"
+                  name="priorityRadioValue"
+                  value="Low"
+                  class="rad"
+                  style="background-color: green"
+                  [(ngModel)]="priority"
+                />
+                {{ "low" | translate }}
+              </div>
+            </div>
+            <div *ngIf="formSubmitted && !priority" style="color: red; margin-top: 20px; margin-bottom: 20px;">
+              <p class="error-message text-red-600 p-0 m-0">
+                {{ 'selectPriority' | translate}}
+              </p>
+            </div>
+            <br /><br />
+          </div>
+          <br />
+          <div id="desno">
+            <h5 style="position: relative; right:30px; width:580px">{{ "parentTask" | translate }}</h5>
+            <br /><br />
+            <select [(ngModel)]="taskPar" (ngModelChange)="prazni()">
+              <option [value]="0">{{ "noParentTask" | translate }}</option>
+              <option
+                *ngFor="let task of tasks; let i = index"
+                [value]="task['id']"
+              >
+                {{ task["naziv"] }}
+              </option>
+            </select>
+            <br /><br /><br />
+            <h5 style="position: relative; right:30px; width:580px">{{ "taskLabel" | translate }}</h5>
+            <br /><br />
+            <select [(ngModel)]="Lab">
+              <option
+                *ngFor="let label of labels; let i = index"
+                [value]="label['id']"
+              >
+                {{ label["naziv"] }}
+              </option>
+            </select>
+            <br /><br /><br />
+          </div>
+        </div>
+
+        <div style="margin-top: 100px;">
+          <h5 style="float: left; position: relative;">
+            {{'taskDescription' | translate}}
+          </h5>
+          <br /><br />
+          <div class="editor">
+            <ngx-editor-menu
+              
+              [editor]="editor"
+              [toolbar]="toolbar"
+              [style]="{ color: 'black' }"
+              id="newProjectDesc"
+            >
+            </ngx-editor-menu>
+            <ngx-editor [editor]="editor" [(ngModel)]="desc"> </ngx-editor>
+          </div>
+
+          <br /><br /><br />
+          <div style="float: left">
+            <h5>{{'startDate' | translate}}</h5>
+            <div *ngIf="formSubmitted && !dateBeginning" style="color: red; margin-top: 15px;">
+              <p class="error-message text-red-600 p-0 m-0">
+                {{ 'chooseStartingDate' | translate}}
+              </p>
+            </div>
+          </div>
+          <div style="position: relative; float: right">
+            <h5>{{ "endDate" | translate }}</h5>
+            <p-calendar
+              class="ui-calendar"
+              [(ngModel)]="dateBeginning"
+              dateFormat="dd.mm.yy"
+              id="gorDateP"
+              [maxDate]="this.projectEnd"
+              [minDate]="this.projectBeggin"   
+            ></p-calendar>
+            <p-calendar
+              class="ui-calendar"
+              id="finalDateRight"
+              [(ngModel)]="dateEnd"
+              dateFormat="dd.mm.yy"
+              [maxDate]="this.projectEnd"
+              [minDate]="this.projectBeggin"   
+            ></p-calendar>
+            <span style="width: 0px; height: 0px;"><div *ngIf="formSubmitted && !dateEnd" style="color: red; position: relative; left: 187.5px; margin-top: 15px;">
+              <p class="error-message text-red-600 p-0 m-0">
+                  {{ 'chooseEndDate' | translate}}
+              </p>
+            </div></span>
+            <div
+              *ngIf="dateEnd && dateBeginning && dateEnd < dateBeginning"
+              style="color: red; position: relative; left: 187.5px; margin-top: 15px;"
+            >
+              {{'endDateUpozorenje' | translate}}
+            </div>
+          </div>
+          <br /><br /><br /><br /><br />
+        </div>
+        <hr />
+        <h5>{{ "assignee" | translate }}</h5>
+        <br /><br />
+        <div style="width: 500px;">
+          <div
+            class="divZaAssign"
+            *ngFor="let man of this.assignesTheeseGoods; let i = index"
+            style="cursor: pointer"
+          >
+            <div
+              style="cursor: pointer"
+              (click)="removeAssigne({i})"
+              class="innerCircle"
+            >
+              <img src="{{ man['slika'] }}" />
+              <span>{{ man["ime"] + " " + man["prezime"] }}</span>
+            </div>
+          </div>
+        </div>  
+        <br />
+        <div
+          id="OvoJeZaCircleDok"
+          style="
+            float: right;
+            position: relative;
+            bottom: 50px;
+            border-left: 1px solid rgb(149, 149, 149);
+            padding-left: 20px;
+          "
+        >
+          <div
+            *ngFor="let man of NotIn; let i = index"
+            style="cursor: pointer; margin-bottom: 10px"
+          >
+            <img
+              [src]="add"
+              (click)="AddAssigne({i})"
+              height="30"
+              width="30"
+              style="
+                cursor: pointer;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-right: 20px;
+              "
+            />
+            <div class="innerCircle2" style="cursor: auto">
+              <img src="{{ man['slika'] }}" />
+              <span style="cursor: auto">
+                {{ man["ime"] + " " + man["prezime"] }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <br /><br /><br /><br /><button id="addTask" (click)="CreateTaskNew()">
+          {{ "createTask" | translate }}</button
+        ><button
+          id="cancel2"
+          type="button"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetForm()"
+        >
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  id="buttonforCreatiing"
+  class="btn btn-primary"
+  style="position: relative; left: 150px"
+  [ngStyle]="{
+    bottom: this.type == 'kanban' && '3%',
+    left: this.type == 'kanban' && '25%'
+  }"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal2"
+>
+  {{ "newTask" | translate }}
+</button>

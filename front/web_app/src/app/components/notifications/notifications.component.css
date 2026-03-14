@@ -1,0 +1,157 @@
+.container {
+  border-radius: 50%;
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index:50;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.notRead {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  right: 27px;
+  top: 18px;
+}
+
+.notificationiIcon {
+  position: absolute;
+  top: 18%;
+  left: 19%;
+  color: white;
+  transform: scale(1.2);
+}
+.closeIcon {
+  position: absolute;
+  top: 22%;
+  left: 21%;
+  color: white;
+  transform: scale(1.2);
+}
+.notificationsContainer {
+  position: absolute;
+  right: 40px;
+  top: 50px;
+  width: 350px;
+  max-height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  font-size: 15px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 1em 1em 1em;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+.bubble {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #dd4545;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.pfp {
+  width: 30px;
+  height: 30px;
+  background-color: orange;
+  border-radius: 50%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+ul {
+  overflow: auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  gap: 7px;
+  padding: 10px;
+  width: 100%;
+}
+
+.notifikacija {
+  padding-left: 25px;
+}
+
+.name {
+  padding: 0;
+  margin: 0 0 0 10px;
+}
+
+.date {
+  color: gray;
+  padding: 0;
+  margin: 0;
+}
+li {
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  padding: 1em;
+  border-radius: 20px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+}
+.markAsReadPopUp {
+  cursor: pointer;
+  position: absolute;
+  top: 1px;
+  right: 7px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.5em;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  color: #dd4545;
+  font-size: small;
+  background-color: white;
+}
+.markAsReadPopUp > p {
+  margin: 0;
+}
+.trashCan {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.desc {
+  text-align: start;
+  margin: 0.5em 0 0.5em 0;
+  max-width:200px;
+  word-wrap: break-word;
+}
+
+.noNotifications {
+  margin-bottom: 1em;
+  color: gray;
+}

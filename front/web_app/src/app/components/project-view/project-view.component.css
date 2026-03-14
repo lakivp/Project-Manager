@@ -1,0 +1,38 @@
+.prikaz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+  }
+  
+  .prikazProjekta {
+    padding: 10px 18px;
+    margin-right: 25px;
+    text-decoration: none;
+    color: #333; 
+    background-color: #f0f0f0;
+    border-radius: 0.625rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    gap:12px
+  }
+
+  .kanban{
+    width: 1500px;
+  }
+  .prikazProjekta:hover {
+    background-color:#dd4545;;
+    color: white;
+  }
+
+  .prikazProjekta.active {
+    background-color: black; 
+    color: white;
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  

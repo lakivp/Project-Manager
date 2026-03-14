@@ -1,0 +1,188 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" style="width: 450px; top: 150px;">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" >{{'filterTasks' | translate}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+              <div class="row">
+                <div class="col">
+                    <label for="startDate">{{'startDate' | translate}}:</label>
+                    <p-calendar id="startDate" [(ngModel)]="startDate" dateFormat="dd.mm.yy" ></p-calendar>
+                </div>
+                <div class="col">
+                    <label for="endDate">{{'endDate' | translate}}:</label>
+                    <p-calendar id="endDate" [(ngModel)]="endDate" dateFormat="dd.mm.yy"></p-calendar>
+                </div>
+              </div>
+              <div class="mb-3">
+                  <label for="filterInput" class="form-label" >{{'name' | translate}}:</label>
+                  <input type="text" class="form-control" id="filterInput" [(ngModel)]="filterName" >
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="statusFilter" class="form-label" >{{'label' | translate}}:</label>
+                  <select class="form-select" id="statusFilter" [(ngModel)]="selectedLabel" >
+                      <option value="">{{'chooseLabel' | translate}}</option>
+                      <option value="To-Do">To-Do</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Completed">Completed</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="priorityFilter" class="form-label" >{{'priority' | translate}}:</label>
+                  <select class="form-select" id="priorityFilter" [(ngModel)]="selectedPriority">
+                      <option value="">{{'choosePriority' | translate}}</option>
+                      <option value="High">{{'high' | translate}}</option>
+                      <option value="Medium">{{'medium' | translate}}</option>
+                      <option value="Low">{{'low' | translate}}</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" data-bs-dismiss="modal" class="btn btn-forth" id="applyFilterBtn" style="margin-right: 20%; background-color: black; color: white;" (click)="applyFilter()">{{'applyFilter' | translate}}</button>
+              <button type="button" class="btn btn-forth" id="resetFilterBtn" style="margin-right: 15%; background-color: black; color: white;"  (click)="resetFilters()">{{'resetFilter' | translate}}</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div style="display: flex; flex-direction: column;">
+  <div style="display: flex; flex-direction: column; margin-top: 30px;">
+    <div class="filtered-options-container" style=" margin-left: 15px;">
+      <div *ngFor="let option of filteredOptions; let i = index" class="filtered-option">
+        {{ option }}
+        <span class="remove-option-icon" (click)="removeFilter(i)">
+          <i class="fas fa-times"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+<div id="tabela1" style="margin-top:15px">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <button
+            type="button"
+            class="btn btn-three"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            style="border: none; margin-left: 5px;"
+          >
+            <img src="assets/images/filter.png" width="22" height="22" class="hover-pointer"  />
+          </button>
+          </th>
+          <th class="header">
+            <div class="flex-container">
+              {{'taskName' | translate}}
+              <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%"
+              (click)="sortBy('naziv')"
+              class="hover-pointer"
+            />
+            </div>
+          </th>
+          <th *ngIf="this.link !== 'projectView/:id'">
+            <div class="flex-container">
+              {{'projectName' | translate}}
+              <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%"
+              (click)="sortBy('projectName')"
+              class="hover-pointer"
+            />
+            </div>
+          </th>
+          <th class="header">
+            <div class="flex-container">
+              {{'label' | translate}}
+              <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%"
+              (click)="sortBy('idLabel')"
+              class="hover-pointer"
+            />
+            </div>
+          </th>
+          <th class="header">
+            <div class="flex-container">
+              {{'priority' | translate}}
+              <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%"
+              (click)="sortBy('prioritet')"
+              class="hover-pointer"
+            />
+            </div>
+          </th>
+          <th class="header">
+            <div class="flex-container">
+              {{'startDate' | translate}}
+              <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%"
+              (click)="sortByDate('pocetak')"
+              class="hover-pointer"
+            />
+            </div>
+          </th>
+          <th class="header">
+            <div class="flex-container">
+              <span> {{'endDate' | translate}}</span>
+              <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%"
+              (click)="sortByDate('kraj')"
+              class="hover-pointer"
+            />
+            </div>
+          </th>
+          <th *ngIf="isOwner"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="rowForColor" *ngFor="let task of pagedTasks">
+          <td>
+            <a [routerLink]="['/taskDescription', {taskId:this.task.id}]" class="text-link">
+              <img src="assets/images/externalLink.png" width="24" height="24" class="hover-pointer" />
+            </a>
+          </td>
+          <td class="hover-pointer"  [routerLink]="['/taskDescription', {taskId:this.task.id}]">{{ task.naziv }}</td>
+          <td *ngIf="this.link !== 'projectView/:id'">{{task.projectName}}</td>
+          <td>
+            <ng-container [ngSwitch]="task.idLabel">
+              <ng-template ngSwitchDefault>{{ task.labelNaziv }}</ng-template>
+            </ng-container>
+          </td>
+ 
+          <td [ngStyle]="{color:getPriorityColor(task.prioritet)}">{{ task.prioritet | translate}}</td>
+          <td>{{ task.pocetak }}</td>
+          <td >{{ task.kraj || '-' }}</td>
+          <td  *ngIf="isOwner" (click)="confirmDelete(task.id)" class="hover-pointer">
+            <lucide-icon name="trash-2"></lucide-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+    <mat-paginator class="settingClassPages" style="position: absolute;top: 72em;"  [pageSize]="pageSize" [length]="tasks.length" (page)="onPageChange($event)">
+    </mat-paginator>
+</div>
+<p-confirmDialog header="{{'confirmDeletion' | translate}}" icon="pi pi-exclamation-triangle" acceptLabel="{{'yes' | translate}}" rejectLabel="{{'no' | translate}}" ></p-confirmDialog>

@@ -1,0 +1,94 @@
+/* @import 'dhtmlx-gantt/codebase/sources/dhtmlxgantt.css';  */
+@import 'dhtmlx-gantt/codebase/skins/dhtmlxgantt_broadway.css';
+.gantt-chart {
+	position: relative;
+	height: 950px;
+    width: 1500px;
+    padding-top: 20px;
+}
+
+.gantt_cal_light{
+    height: 265px !important;
+}
+
+.gantt_row.odd {
+    background-color: #fff !important;
+}
+
+.prikazGrid {
+    margin-top: 8px;
+    padding: 5px 15px;
+    margin-right: 25px;
+    text-decoration: none;
+    color: #333; 
+    background-color: #f0f0f0;
+    border-radius: 0.625rem;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.prikazGrid:hover {
+    background-color: #263238; 
+    color: white;
+    cursor: pointer;
+  }
+
+  .prikazGrid.active {
+    background-color: #263238; 
+    color: white;
+  }
+
+
+.gantt_tree_icon{
+    cursor: pointer !important;
+}
+/*podtaskovi*/
+.gantt_tree_icon.gantt_file{
+    background-image: url('../../../assets/images/checklist.png') !important;
+    background-size: 15px;
+}
+
+.gantt_tree_icon.gantt_folder_open{
+    background-image: url('../../../assets/images/to-do-list.png') !important;
+    background-size: 17px;
+}
+
+.gantt_tree_icon.gantt_folder_closed{
+    background-image: url('../../../assets/images/to-do-list.png') !important;
+    background-size: 17px;
+}
+
+
+.gantt_line_wrapper{
+    cursor: pointer !important;
+}
+ 
+.gantt_grid_head_cell:hover {
+    cursor: pointer !important;
+  }
+
+.gantt_save_btn_set{
+    background-color: #0891d1 !important;
+}
+
+.gantt_delete_btn_set{
+    background-color: #cf5151 !important;
+}
+
+.gantt_cal_ltext textarea {
+    font-size: 14px !important;
+    height: 75% !important;
+}
+
+.gantt_task_line {
+    border-radius: 8px; /* Podesite vrednost po želji */
+}
+
+.gantt_layout_cell {
+    border-radius:8px;
+}
+
+.gantt_task_drag.task_left, .gantt_task_drag.task_right {
+    cursor: ew-resize !important; /* Promenite izgled kursora kada je resizovanje */
+}

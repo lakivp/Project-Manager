@@ -1,0 +1,82 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> 
+<h2 >
+    <span style="margin-right:8px; font-size:20px;">{{'comments'|translate}}  </span>
+    <span style=" position: relative; background-color:rgba(255, 129, 129, 0.509); border-radius: 5px; padding:3px 8px 3px 8px;  color:red; font-size:18px"> 
+        {{this.brojKom+this.odg}}
+    </span> 
+</h2>
+<div *ngIf="this.comments.length!=0">
+            <div *ngFor="let comment of comments">
+                <div id="tabela2" [ngStyle]="{ 'color': 'black' }">
+                    <span id="comentEditDa{{comment['id']}}" style="display: none;">
+                        <textarea  maxlength="300" id="myTextarea{{comment['id']}}"  class="EditZaSve" style="border: none; height:120px;width:100%"></textarea><br>
+                        <mat-icon (click)="vratiOrigin(comment['id'],comment['parentId'],comment['redBr'])"   fontIcon="close" style="height: 20px; width:20px; position:relative;  bottom:20px; color:red; float:right; cursor:pointer"></mat-icon>
+                        <mat-icon (click)="menjaj(comment['id'],comment['parentId'],comment['redBr'])"   fontIcon="check" style="height: 20px; width:20px; position:relative;  bottom:20px; color:green; left:-30px; float:right; cursor:pointer"></mat-icon>
+                    </span>
+                    <span id="comentNormal{{comment['id']}}" style="display: block;">
+                        <img [routerLink]="['/profile', comment['autorId'],0]" class="little" style="cursor:pointer;height:40px; width:40px ;border-radius: 50%;" [src]="comment['slika']" >
+                        <span style="color:gray;">{{comment['ime']}} </span><div style="height: 10px;">  </div>
+                        <div style="height: 0; width:0px"><div class="circle" style="position: relative; left:25px; bottom:23px;" [style]="{backgroundColor:comment['boja']}"></div></div>
+                        
+                        <span [innerHTML]="getFormattedText(comment['text'])"></span><div style="height: 10px;">  </div>
+                        <div (click)="OpenReply(comment['redBr'])" style="cursor: pointer; display: inline;">
+                            <img class="little"  src="../../../../assets/images/reply.png" >
+                            <span style="color:gray; margin-right:30px; " >{{'reply'|translate}}</span>
+                        </div>
+                        <span *ngIf="this.comment['brOd']!=0"  style="color:red; margin-right:30px; cursor: pointer; " (click)="hideShow(comment['redBr'])">
+                            <span *ngIf="comment['prikazOdgovora']==1">
+                                {{'hideReplies'|translate}}
+                            </span>
+                            <span *ngIf="comment['prikazOdgovora']==0">{{'showReplies'|translate}} {{comment['odgovori'].length}}</span>
+                            
+                        </span>   
+                        <mat-icon (click)="DodajSrce(comment['id'],comment['parentId'],comment['redBr'],0)" [style]="{color:comment['bojaSrca']}" style="position: relative; top:6px; cursor:pointer">
+                            favorite
+                        </mat-icon> 
+                        {{comment['likes']}}
+                        <lucide-icon (click)="brisiKomentar(comment['id'],comment['parentId'],comment['redBr'])" *ngIf="comment['autorId']==this.userId" 
+                            src="../../../assets/images/delite.png" style="height: 20px; width:20px; float:right; position:relative; top:6px; cursor:pointer; color:#dd4545" name="trash-2" size=20></lucide-icon>
+                        <lucide-icon  (click)="menjajOrigin(comment['id'],comment['parentId'],comment['redBr'],comment['text'])" *ngIf="comment['autorId']==this.userId" name="pencil" size="20"
+                            style="height: 30px; width:30px; position:relative; top:6px; left:-10px; float:right; cursor:pointer; color:gray"></lucide-icon>
+                    </span>
+                </div>
+                <div *ngIf="comment['prikazOdgovora']==1">
+                    <div id="tabelaRep" *ngFor="let com of comment['odgovori']; let i = index " style="display:block" [ngStyle]="{ 'color': 'black' }" >
+                        <span id="comentEditDa{{com['id']}}" style="display: none;">
+                            <textarea maxlength="300" id="myTextarea{{com['id']}}"  class="EditZaSve" style="border: none; height:120px;width:900px">22</textarea><br>
+                            <mat-icon (click)="vratiOrigin(com['id'],com['parentId'],comment['redBr'])"   fontIcon="" style="height: 20px; width:20px; position:relative;  bottom:20px; color:red; float:right; cursor:pointer"></mat-icon>
+                            <mat-icon (click)="menjaj(com['id'],com['parentId'],i)"   fontIcon="check" style="height: 30px; width:30px; position:relative;  bottom:20px; color:green; left:-30px; float:right; cursor:pointer"></mat-icon>
+                        </span>
+                        <span id="comentNormal{{com['id']}}" style="display: block;">
+                            <img  [routerLink]="['/profile', com['autorId'],0]" class="little" style="height:40px; width:40px;border-radius: 50%;cursor:pointer" [src]="com['slika']" >
+                            <span style="color:rgb(179, 13, 13);">{{com['ime']}} </span>
+                            <div style="height: 10px;">  </div>
+                            <div style="height: 0; width:0px"><div class="circle" [style]="{backgroundColor:com['boja']}" style="position: relative; left:25px; bottom:23px; background-color:red"></div></div>
+                            
+                            <span [innerHTML]="getFormattedText(com['text'])"></span>
+                            <div style="height: 10px;">  </div>
+                            <mat-icon (click)="DodajSrce(com['id'],com['parentId'],comment['redBr'],i)"  [style]="{color:com['bojaSrca']}" style="position: relative; top:6px; cursor:pointer">favorite</mat-icon> 
+                            {{com['likes']}}
+                            <lucide-icon (click)="brisiKomentar(com['id'],com['parentId'],comment['redBr'])" *ngIf="com['autorId']==this.userId" src="../../../assets/images/delite.png" style="height: 20px; width:20px; float:right;position:relative; top:6px; cursor:pointer; color:#dd4545" name="trash-2" size="20"></lucide-icon>
+                            <lucide-icon (click)="menjajOrigin(com['id'],com['parentId'],com['redBr'],com['text'])" *ngIf="com['autorId']==this.userId" fontIcon="edit" style="height: 30px; width:30px; position:relative; top:6px; left:-10px; float:right; cursor:pointer; color:gray" name="pencil" size="20"></lucide-icon> 
+                        </span>
+
+                    </div>
+                    <div *ngIf="comment['zaOdg']">
+                        <textarea (keydown.enter)="PushReply(comment['id'],comment['redBr'])" maxlength="300" [(ngModel)]="TextReply" type="text" style="display:block; resize: none; height:200px; width:89%; border:2px solid rgb(255, 149, 149)"  id="tabela3Rep"></textarea>
+                        <lucide-icon name="X" (click)="closeReply(comment['redBr'])" style="color:gray; position:relative; bottom:190px; left:715px; cursor: pointer;" size="20"></lucide-icon>
+                        <span style="float:left; color:gray; position:relative; bottom:35px; left:130px">{{'maxCh'|translate}}.</span>
+                        <span  (click)="PushReply(comment['id'],comment['redBr'])" style="float:right; cursor: pointer; position:relative; right:0px;bottom:35px"><img class="little"  src="../../../../assets/images/send.png" ></span>
+                    </div>
+                </div>
+            </div>
+            <br><h4 ><span style=" margin-right:19px; font-size: 20px; margin:0">
+                {{'newComment'|translate}}
+            </span></h4>
+
+
+
+</div>
+<textarea (keydown.enter)="PushText()" maxlength="300" [(ngModel)]="textValue" type="text" style=" resize: none; height:200px; width:100%; border:2px solid rgb(255, 149, 149)"  id="tabela3"></textarea>
+<span style="float:left; color:gray; position:relative; bottom:35px; left:10px">{{'maxCh'|translate}}.</span>
+<span  (click)="PushText()" style="float:right; cursor: pointer; position:relative; bottom:35px"><img class="little"  src="../../../../assets/images/send.png" ></span>

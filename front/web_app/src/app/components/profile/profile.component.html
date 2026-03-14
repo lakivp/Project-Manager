@@ -1,0 +1,273 @@
+<div style="height: 0px; margin: auto">
+  <div id="butCrop">
+    <h1 style="float: left">{{ "cropImage" | translate }}</h1>
+    <br /><br />
+    <image-cropper
+      style="width: 700px; margin-left: 30px"
+      [roundCropper]="true"
+      [imageChangedEvent]="imageChangedEvent"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded($event)"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+    <br /><br />
+    <button
+      id="SaveCropElse"
+      (click)="this.submitNewPicture()"
+      style="
+        background-color: black;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 40px 10px 40px;
+      "
+    >
+      {{ "saveImage" | translate }}
+    </button>
+    <button
+      (click)="this.closeCrop2()"
+      style="
+        background-color: white;
+        color: black;
+        border-radius: 20px;
+        padding: 10px 40px 10px 40px;
+        margin-left: 20px;
+      "
+    >
+      {{ "cancelEditing" | translate }}
+    </button>
+  </div>
+</div>
+<!--<img *ngIf="croppedImage" [src]="croppedImage['changingThisBreaksApplicationSecurity']" alt="Cropped Image">  -->
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<div
+  style="filter: none; position: relative"
+  id="containerProfile"
+  class="editProfile"
+  *ngIf="edit"
+>
+  <h1 class="header">{{ "editProfile" | translate }}</h1>
+  <div class="containerEdit" for="formFile">
+    <img *ngIf="this.user.imageURL" class="pfp" src="{{ imageProfileThis }}" />
+    <img *ngIf="!this.user.imageURL" class="pfp" src="{{ imageProfileThis }}" />
+    <div style="height: 0; width: 0px">
+      <div class="circle" style="position: relative; bottom: 50px; left:10px"></div>
+    </div>
+    <div class="changePfp">
+      <mat-icon>insert_photo</mat-icon>
+      <label for="formFile" class="custom-file-upload">
+        {{ "changeProfile" | translate }}
+      </label>
+      <input
+        (change)="this.onFilechange($event)"
+        class="form-control"
+        type="file"
+        id="formFile"
+        accept="image/*"
+      />
+    </div>
+
+    <form *ngIf="user" [formGroup]="profileForm" class="profileForm">
+      <div class="personalInfo description" style="width:80%; margin-bottom: 1.5em; margin-top: 2em;">
+        <label [htmlFor]="'description'">{{ "description" | translate }}</label>
+        <textarea
+          class="detail"
+          id="description"
+          title="Description"
+          formControlName="description"
+          style="width: 100%; min-height: 150px; padding:10px"
+        >
+        </textarea>
+      </div>
+      <div class="info">
+        <div class="personalInfo">
+          <label [htmlFor]="'username'">{{ "username" | translate }}</label>
+          <input
+            class="detail"
+            id="username"
+            title="Username"
+            formControlName="username"
+            placeholder="Username"
+          />
+          <label [htmlFor]="'email'">Email</label>
+          <input
+            class="detail"
+            id="email"
+            title="Email"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <label [htmlFor]="'role'">{{ "role" | translate }}</label>
+          <ng-select
+            *ngIf="this.viewer && this.viewer.idUlogeAplikacija == 1"
+            formControlName="role"
+            [items]="this.roles"
+            [attr.disabled]="
+              this.viewer && this.viewer.idUlogeAplikacija != 1 ? true : null
+            "
+          >
+          </ng-select>
+          <div
+            class="detail role"
+            *ngIf="this.viewer && this.viewer.idUlogeAplikacija != 1"
+          >
+            <p class="p-0 m-0">
+              {{
+                this.user.idUlogeAplikacija == 1
+                  ? "Admin"
+                  : this.user.idUlogeAplikacija == 2
+                  ? "User"
+                  : this.user.idUlogeAplikacija == 3
+                  ? "Guest"
+                  : "Project Manager"
+              }}
+            </p>
+          </div>
+        </div>
+        <div class="personalInfo">
+          <label [htmlFor]="'first_name'">{{ "firstName" | translate }}</label>
+          <input
+            class="detail"
+            id="first_name"
+            title="First name"
+            placeholder="First name"
+            formControlName="first_name"
+          />
+          <label [htmlFor]="'last_name'">{{ "lastName" | translate }}</label>
+          <input
+            class="detail"
+            id="last_name"
+            title="Last name"
+            placeholder="Last name"
+            formControlName="last_name"
+          />
+          <label [htmlFor]="'phoneNumber'">{{ "phone" | translate }}</label>
+          <input
+            class="detail"
+            id="phoneNumber"
+            title="Phone number"
+            formControlName="phoneNumber"
+            placeholder="Phone number"
+          />
+          <label [htmlFor]="'specialisation'">{{
+            "specialisation" | translate
+          }}</label>
+          <input
+            class="detail"
+            id="specialisation"
+            title="Specialisation"
+            placeholder="Specialisation"
+            formControlName="specialisation"
+          />
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="SaveBut" class="saveBtn button" (click)="onSubmit()">
+          {{ "saveChanges" | translate }}
+        </button>
+        <button id="CancBut" class="cancelBtn button" (click)="cancelEdit()">
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="profileView" *ngIf="!edit" style="position: relative">
+  <h1 class="header">{{ "previewProfile" | translate }}</h1>
+  <div *ngIf="!this.user" class="containerEdit">
+    <p>This user doesn't exist.</p>
+  </div>
+  <div class="containerEdit" *ngIf="this.user"  style="height: 800px;">
+    <button
+      *ngIf="
+        this.user.idUlogeAplikacija &&
+        this.viewer.idUlogeAplikacija &&
+        (this.viewer.idUlogeAplikacija == this.user.idUlogeAplikacija ||
+          this.viewer.idUlogeAplikacija == 1)
+      "
+      [routerLink]="['/profile', user.id, 1]"
+      class="editButtonView"
+      (click)="this.settingServ.ColorElements(1)"
+    >
+      <mat-icon>edit</mat-icon>{{ "edit" | translate }}
+    </button>
+    <div class="viewContainer">
+      <img
+        *ngIf="this.user.imageURL"
+        class="pfp"
+        src="{{ imageProfileThis }}"
+      />
+      <img
+        *ngIf="!this.user.imageURL"
+        class="pfp"
+        src="{{ imageProfileThis }}"
+      />
+      <p class="font-bold text-lg">
+        {{ this.user.ime }} {{ this.user.prezime }}
+      </p>
+      <p class="text-sm username">{{ "@" + this.user.username }}</p>
+    </div>
+    <div style="height: 0; width: 0px">
+      <div
+        class="circle"
+        style="position: relative; bottom: 115px; left: 6px"
+      ></div>
+    </div>
+    <div class="personalInfoView description" style="width:90%">
+      <h6 style="font-weight: 600;padding:0; margin:0; color:#dd4545">Bio</h6>
+      <p style="font-size:14px; padding:0; margin:0">
+        {{ this.user.opis }}
+      </p>
+    </div>
+    <h2 class="about">{{ "about" | translate }}</h2>
+    <div class="infoContainer">
+      <div class="infoView">
+        <div class="personalInfoView">
+          <p class="titleInfo">Email</p>
+          <p class="aboutInfo" id="email">{{ this.user.email }}</p>
+        </div>
+        <div class="personalInfoView">
+          <p class="titleInfo">{{ "phone" | translate }}</p>
+          <p class="aboutInfo">
+            {{ this.user.phoneNumber }}
+          </p>
+        </div>
+      </div>
+      <div class="infoView">
+        <div class="personalInfoView">
+          <p class="titleInfo">{{ "role" | translate }}</p>
+          <p class="aboutInfo">
+            <ng-container [ngSwitch]="user.idUlogeAplikacija">
+              <p *ngSwitchCase="1">
+                {{ "admin" | translate }}
+              </p>
+              <p *ngSwitchCase="2">
+                {{ "user" | translate }}
+              </p>
+              <p *ngSwitchCase="3">
+                {{ "guest" | translate }}
+              </p>
+              <p *ngSwitchCase="4">
+                {{ "projectManager" | translate }}
+              </p>
+            </ng-container>
+          </p>
+        </div>
+        <div class="personalInfoView">
+          <p class="titleInfo">{{ "specialisation" | translate }}</p>
+          <!-- <ul>
+              <li
+              class="aboutInfo"
+              id="email" *ngFor = "let position of positions"
+              >Designer</li>
+            </ul> -->
+          <p class="aboutInfo">{{ this.user.specijalizacija }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

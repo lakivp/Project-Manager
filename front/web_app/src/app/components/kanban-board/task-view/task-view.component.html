@@ -1,0 +1,214 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<div class="header" style="position: relative; ">
+  <div *ngIf="this.routeURL !== 'projectView/:id'">
+    <div class="titleAndDesc">
+      <h2>{{'myTasks' | translate}}</h2>
+      <p class="description">{{'myTasksDescription' | translate}}</p>
+    </div>
+    <app-all-tasks-table ></app-all-tasks-table>
+  </div>
+  <div class="all" *ngIf="this.routeURL == 'projectView/:id'" style="margin-top: 25px;">
+    <div class="gap-3 flex items-center justify-center; width:100%; margin-bottom:1em">
+      <button class="sortBtn" (click)="openSortStage()">
+        <lucide-icon name="arrow-down-wide-narrow"></lucide-icon>{{'stageOrder' | translate}}
+      </button>
+      <button class="addTaskStage" (click)="openAddStageModal()">
+        {{'addTaskStages' | translate}}
+      </button>
+      <button class="filterBtn" style="margin-left:auto; margin-right: 0px;  background-color: transparent; border:none; display: flex; gap:10px; justify-content: center; align-items: center;" (click)="openFilterModal()">
+        <lucide-icon name="list-filter" style="margin-bottom: 3px;"></lucide-icon>{{'filterTasks' | translate}}
+      </button>
+    </div>
+    <div class="kanbanWrapper">
+    <div class="allTasksContainer">
+        <ul
+        *ngFor="let label of this.labels"
+          class="taskList"
+          [ngStyle]="{ 'padding-bottom': label.naziv == 'To-Do' && '5em' }"
+          cdkDropList
+          id="{{ label.id }}"
+          [cdkDropListData]="this.tasksRows[label.id]"
+          (cdkDropListDropped)="drop($event, this.tasksRows)"
+          [cdkDropListConnectedTo]="connectedTo"
+        >
+          <div class="title">
+            <p
+              *ngIf="!labelEdit[label.id]"
+              style="
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+              [ngStyle]="{
+                width: this.userRole == true ? '150px' : '100%',
+                'text-align': this.userRole == true ? 'left' : 'center'
+              }"
+            >
+              {{ label.naziv }}
+            </p>
+            <div style="display: flex" *ngIf="!labelEdit[label.id]">
+              <button
+                
+                style="background-color: transparent; border: none"
+                (click)="openLabelEdit(label.id)"
+                *ngIf="this.userRole"
+              >
+                <lucide-icon
+                  name="pencil"
+                  size="20"
+                  class="editLabel red"
+                ></lucide-icon>
+              </button>
+              <button
+                style="background-color: transparent; border: none"
+                (click)="deleteLabel(label)"
+                *ngIf="this.userRole"
+              >
+                <lucide-icon
+                  name="trash-2"
+                  size="20"
+                  class="editLabel red"        
+                ></lucide-icon>
+              </button>
+            </div>
+            <input
+              *ngIf="labelEdit[label.id] && this.userRole"
+              class="detail"
+              id="labelName"
+              [(ngModel)]="labelName[label.id]"
+            />
+            <div
+              *ngIf="labelEdit[label.id] && this.userRole"
+              style="display: flex; padding-left: 8px; gap: 5px"
+            >
+              <button
+                style="background-color: transparent; border: none; padding: 0"
+                (click)="changeLabelName(label)"
+              >
+                <lucide-icon
+                  name="check"
+                  size="20"
+                  class="editLabel green"
+                ></lucide-icon>
+              </button>
+              <button
+                style="background-color: transparent; border: none; padding: 0"
+                (click)="closeLabelEdit(label.id)"
+              >
+                <lucide-icon
+                  name="X"
+                  size="20"
+                  class="editLabel red"
+                ></lucide-icon>
+              </button>
+            </div>
+          </div>
+          <li
+            [cdkDragData]="task"
+            style="margin-bottom: 10px; margin-top:10px;"
+            *ngFor="let task of this.tasksRows[label.id]"
+            cdkDrag
+          >
+            <app-task [task]="task" [type]="label.id"></app-task>
+          </li>
+        </ul>
+    </div>
+  </div>
+    <div class="modal" *ngIf="this.taskSortingModal">
+      <mat-icon class="closeIcon" (click)="closeSortStage()">close</mat-icon>
+      <div class="container">
+        <p>{{'changeStageOrder' | translate}}</p>
+        <div
+          cdkDropList
+          class="example-list"
+          (cdkDropListDropped)="dropSort($event)"
+        >
+          @for (label of this.labels; track label){
+          <div class="example-box" cdkDrag>{{ label.naziv }}</div>
+          }
+        </div>
+      </div>
+    </div>
+    <app-add-task-stage
+      (closeModal)="closeAddStageModal()"
+      *ngIf="insertingStage"
+      (addStage)="addTaskStage($event)"
+    ></app-add-task-stage>
+  </div>
+</div>
+<p-confirmDialog
+  [header]= "confirmHeader"
+  icon="pi pi-exclamation-triangle"
+  [acceptLabel]="acceptLabel"
+  [rejectLabel]="rejectLabel"
+></p-confirmDialog>
+<ng-template #deleteDialog>
+  <h2 mat-dialog-title>{{'delTask' | translate}}</h2>
+  <mat-dialog-content>
+    {{'delLabel' | translate}}
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>OK</button>
+  </mat-dialog-actions>
+</ng-template>
+<div class="modal" *ngIf="this.taskSortingModal">
+  <mat-icon class="closeIcon" (click)="closeSortStage()">close</mat-icon>
+  <div class="container">
+    <p>{{'changeStageOrder' | translate}}</p>
+    <div
+      cdkDropList
+      class="example-list"
+      (cdkDropListDropped)="dropSort($event)"
+    >
+      <div class="example-box" *ngFor="let label of this.labels" cdkDrag>{{ label.naziv }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="this.filterModalOpen || this.taskSortingModal"></div>
+<div class="filterModal" *ngIf="this.filterModalOpen">
+  <mat-icon class="closeIcon" (click)="closeFilterModal()">close</mat-icon>
+  <div class="container" style="width:100%;">
+    <h2 style="font-size: 20px; ">{{'filterTasks' | translate}}</h2>
+    <div class="filter-options" style="display:flex; flex-direction: column; width:100%; gap:1em">
+      <div  style="width:100%; display: flex; flex-direction: column;">
+        <label for="name">{{'name' | translate}}:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="filterName" style="border: 1px solid #ccc; border-radius: 0.5rem;height: 30px; width:100%;"/>
+      </div>
+      <div  style="width:100%">
+      <label for="priorityFilter">{{'priority' | translate}}</label>
+      <select  class="form-select" id="priorityFilter" [(ngModel)]="priority">
+        <option value="">{{'choosePriority' | translate}}</option>
+        <option *ngFor="let priority of priorities" [value]="priority">{{priority}}</option>
+      </select>
+    </div>
+      <div style="display:flex; width: 100%; justify-content: space-between; align-items: center; ">
+        <div class="col">
+          <label for="startDate">{{ "startDate" | translate }}:</label>
+          <p-calendar
+            id="startDate"
+            [(ngModel)]="startDate"
+            dateFormat="dd.mm.yy"
+          ></p-calendar>
+        </div>
+        <div class="col">
+          <label for="endDate">{{ "endDate" | translate }}:</label>
+          <p-calendar
+            id="endDate"
+            [(ngModel)]="endDate"
+            dateFormat="dd.mm.yy"
+          ></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content:space-between; align-items: center; width:100%">
+      <button style="color:white; padding:0.5em 2em; background-color: black; border-radius: 10px; border:none" (click)="resetFilters()">{{'resetFilter' | translate}}</button>
+      <button style="color:white; padding:0.5em 2em; background-color: black; border-radius: 10px; border:none" (click)="applyFilters()">{{'applyFilter' | translate}}</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,670 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<div
+  id="container"
+  class="ClassForSettOver"
+  *ngIf="!edit"
+  [ngStyle]="{ border: '1px solid white' }"
+>
+  <lucide-icon
+    *ngIf="isOwner"
+    class="editIcon"
+    name="pencil"
+    style="margin-left: auto; cursor: pointer"
+    (click)="changeEdit()"
+  ></lucide-icon>
+  <div style="height: 30px" *ngIf="project.prioritet">
+    <div
+      id="levo"
+      style="
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      "
+    >
+      <lucide-icon
+        name="flame"
+        [ngStyle]="{
+          color:
+            project.prioritet.toLowerCase() == 'high'
+              ? '#dc2626'
+              : project.prioritet.toLowerCase() == 'medium'
+              ? '#fbbf24'
+              : '#166534'
+        }"
+      ></lucide-icon
+      ><b
+        [ngStyle]="{
+          color:
+            project.prioritet.toLowerCase() == 'high'
+              ? '#dc2626'
+              : project.prioritet.toLowerCase() == 'medium'
+              ? '#fbbf24'
+              : '#166534'
+        }"
+        >{{ project.prioritet | translate }} {{ "priority" | translate }}</b
+      >
+    </div>
+  </div>
+  <div
+    style="
+      margin-top: 3em;
+      position: relative;
+      top: -20px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(150px, 1fr));
+      width:min-content
+    "
+  >
+    <div class="grid-item">
+      <lucide-icon name="calendar"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "startDate" | translate
+      }}</span>
+    </div>
+    <b>{{ project.pocetak }}</b>
+    <div class="grid-item">
+      <lucide-icon name="calendar-check"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "dueDate" | translate
+      }}</span>
+    </div>
+    <b>{{ project.kraj }}</b>
+    <div class="grid-item" style="margin-top: 1em">
+      <lucide-icon name="user-round"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "owner" | translate
+      }}</span>
+    </div>
+    <div class="grid-item" *ngIf="assignees.length != 0">
+      <div
+        class="flex innerCircle"
+        style="
+          margin-top: 1em;
+          background-color: #f0f0f0;
+          border-radius: 50%;
+          height: min-content;
+          min-width: 130px;
+          max-width: 180px;
+          white-space: nowrap;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        "
+        [routerLink]="['/profile', ownerId, 0]"
+      >
+        <img
+          style="
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            position: relative;
+            top: 0px;
+            margin-right: 7px;
+            object-fit: cover;
+          "
+          [src]="slika"
+        />
+        <p style="padding: 0; margin: 0; font-size: 15px">
+          {{ ime }} {{ prezime }}
+        </p>
+      </div>
+    </div>
+    <div class="grid-item" style="margin-top:12px">
+      <lucide-icon name="users-round"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "members" | translate
+      }}</span>
+    </div>
+    <div
+      class="grid-item"
+      style="
+        display: flex;
+        align-items: center;
+        width: 600px;
+        max-width: 600px;
+        flex-wrap: wrap;
+      "
+    >
+      <p
+        *ngIf="assignees.length == 1"
+        style="color: gray; font-size: 14px; padding: 0; margin: 0;"
+      >
+        No members on this project yet.
+      </p>
+      <div
+        *ngFor="let assignee of assignees; let i=index "
+        [routerLink]="['/profile', assignee['id'], 0]"
+      >
+        <!-- *ngIf ="{{assignee.id!=}}" -->
+        <div
+          class="innerCircle"
+          style="
+            background-color: #f0f0f0;
+            max-width: 200px;
+            height: min-content;
+            margin: 5px 10px 10px 0px;
+            white-space: nowrap;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding-right: 10px;
+          "
+          *ngIf="assignee.uloga != 'Owner' && !showAllMembersTable && i<5"
+        >
+          <img
+            style="
+             height: 35px;
+                width: 35px;
+                border-radius: 50%;
+                position: relative;
+                top: 0px;
+                margin-right: 7px;
+                object-fit: cover;
+            "
+            *ngIf="assignee.uloga != 'Owner'"
+            [src]="assignee.slika"
+          />
+          <span style="font-size: 15px" *ngIf="assignee.uloga != 'Owner'"
+            >{{ assignee.ime }} {{ assignee.prezime }}</span
+          >
+        </div>
+      </div>
+      <div
+        (click)="openMembersTable()"
+        class="innerCircle viewAllBtn"
+        style="
+          height: min-content;
+          padding: 2px 20px;
+          white-space: nowrap;
+          border-radius: 50px;
+          margin-bottom:6px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          background-color: white;
+        "
+        *ngIf="!showAllMembersTable && assignees.length > 1"
+      >
+        {{ "viewAll" | translate }}
+      </div>
+    </div>
+
+    <div *ngIf="showAllMembersTable" style="display: flex; margin-left: 50px">
+      <table  style=" border:1px solid #d9d9d9; ">
+        <thead>
+          <tr>
+            <th></th>
+            <th>{{'name' | translate}}</th>
+            <th>{{'username' | translate}}</th>
+            <th>{{'role' | translate}}</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of assignees">
+            <td>
+              <img
+                style="
+                  height: 25px;
+                  width: 25px;
+                  border-radius: 50%;
+                  position: relative;
+                  top: 0px;
+                  margin-right: 7px;
+                  object-fit: cover;
+                  cursor:pointer
+                "
+                [src]="member.slika" [routerLink]="['/profile', member['id'],0]"
+              />
+            </td>
+            <td style="white-space: nowrap">
+              {{ member.ime }} {{ member.prezime }}
+            </td>
+            <td>{{ member.username }}</td>
+            <td>{{ member.uloga }}</td>
+            <td>{{ member.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-bottom: 10px; margin-left: 30px">
+        <div
+          class="innerCircle"
+          style="
+            background-color: #f0f0f0;
+            width:30px;
+            height:30px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            border-radius: 50px;
+            align-items: center;
+            cursor: pointer;
+          "
+          (click)="closeMembersTable()"
+        >
+          <lucide-angular
+            name="X"
+            size="18"
+            style="cursor: pointer; padding-bottom: 2px;"
+            [ngStyle]="{ color: 'black' }"
+          ></lucide-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style="display: flex; gap: 10px; margin-bottom: 1.5em">
+      <lucide-icon name="text"></lucide-icon>
+      <p style="color: gray; margin: 0">{{ "description" | translate }}</p>
+    </div>
+    <div style="height: 400px; overflow-y: auto">
+      <div
+        [innerHTML]="this.editorContent"
+        style="font-size: 15px; margin: 0"
+      ></div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="pariticpants" *ngIf="this.participants">
+  <ul
+    style="
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+    "
+  >
+    <li
+      style="
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        height: min-content;
+        white-space: nowrap;
+        border-radius: 50px;
+        max-width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
+      "
+      *ngFor="let assigne of assignees"
+    >
+      <img
+        style="
+          height: 25px;
+          width: 25px;
+          border-radius: 50%;
+          position: relative;
+          top: 0px;
+          margin-right: 7px;
+          object-fit: cover;
+        "
+        [src]="assigne.slika"
+      />
+      <p style="padding: 0; margin: 0; font-size: 15px">
+        {{ assigne.ime }} {{ assigne.prezime }}
+      </p>
+    </li>
+  </ul>
+</div> -->
+<app-project-participants
+  *ngIf="participants"
+  (closeModal)="closeParticipantsView()"
+></app-project-participants>
+<div
+  class="ClassForSettOver"
+  id="container"
+  *ngIf="edit"
+  [ngStyle]="{ border: '1px solid white' }"
+>
+  <mat-spinner
+    *ngIf="this.spinner2"
+    color="warn"
+    style="position: absolute; top: 400px; left: 940px; z-index: 40"
+  ></mat-spinner>
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 1em;
+    "
+  >
+    <div
+      class="innerCircle"
+      style="
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        height: min-content;
+        white-space: nowrap;
+        border-radius: 50px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding-right: 10px;
+        margin-right: 400px;
+      "
+    >
+      <img
+        style="
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          position: relative;
+          top: 0px;
+          margin-right: 7px;
+          object-fit: cover;
+        "
+        [src]="slika"
+      />
+      <p style="padding: 0; margin: 0; font-size: 15px">
+        {{ ime }} {{ prezime }}
+      </p>
+    </div>
+    <button style="cursor: pointer" class="button" (click)="saveProject()">
+      {{ "saveChanges" | translate }}
+    </button>
+    <button style="cursor: pointer" class="button"(click)="discardChanges()" >
+      {{ "discardChanges" | translate }}
+    </button>
+  </div>
+  <div style="margin:1em 0 2em 0">
+    <div
+      id="levo"
+      style="
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      "
+    >
+      <lucide-icon name="flame" style="color: gray"></lucide-icon>
+      <select id="korisnikId" [(ngModel)]="currentPriority">
+        <ng-container *ngFor="let priority of priorities">
+          <option
+            [value]="priority"
+            [ngStyle]="{
+              color:
+                priority.toLowerCase() == 'high'
+                  ? '#dc2626'
+                  : priority.toLowerCase() == 'medium'
+                  ? '#fbbf24'
+                  : '#166534'
+            }"
+          >
+            {{ priority | translate }}
+          </option>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  
+  <div
+    style="
+      margin-top: 1em;
+      display: grid;
+      grid-template-columns: auto auto;
+      width: 50%;
+    "
+  >
+  <div  class="grid-item">
+    <lucide-icon name="calendar"></lucide-icon
+      >
+    <span style="color: gray; margin-left: 10px">{{'projectName' | translate}}</span>
+  </div>
+  <div  class="grid-item">
+    <input id="projectName" style=" border: 1px solid #d6d3d1;
+    border-radius: 7px;
+    position:relative;
+    bottom:12px;
+    padding: 8px;
+    width:700px" [(ngModel)]="projectName" />
+  </div>
+    <div class="grid-item">
+      <lucide-icon name="calendar"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "startDate" | translate
+      }}</span>
+    </div>
+  <div  class="grid-item">
+    <p-calendar
+      [(ngModel)]="dateBeginning"
+      dateFormat="dd.mm.yy"
+      id="gorDateP"
+      #dateBeginningInput="ngModel"
+      (input)="checkDate($event, dateBeginningInput)"
+    ></p-calendar>
+  </div>
+    <div class="grid-item">
+      <lucide-icon name="calendar-check"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "dueDate" | translate
+      }}</span>
+    </div>
+  <div  class="grid-item">
+    <p-calendar
+      [(ngModel)]="dateEnd"
+      dateFormat="dd.mm.yy"
+      id="gorDateP"
+      #dateEndInput="ngModel"
+      (input)="checkDate($event, dateEndInput)"
+    ></p-calendar>
+  </div>
+
+    <div class="grid-item">
+      <lucide-icon name="users-round"></lucide-icon
+      ><span style="color: gray; margin-left: 10px">{{
+        "members" | translate
+      }}</span>
+    </div>
+    <div class="grid-item">
+      <div
+        style="
+          border: 1px solid #d6d3d1;
+          border-radius: 7px;
+          padding: 8px;
+          max-width: 700px;
+          width: 700px;
+          display: flex;
+          flex-wrap: wrap;
+        "
+      >
+        <div *ngFor="let assignee of assignees">
+          <div
+            class="innerCircle"
+            style="
+              background-color: #f0f0f0;
+              height: min-content;
+              width: min-content;
+              padding: 5px 15px;
+              white-space: nowrap;
+              border-radius: 50px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 5px 5px;
+            "
+            *ngIf="assignee.uloga != 'Owner' && !containsObject(assignee)"
+          >
+            <img
+              style="
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+                position: relative;
+                top: 0px;
+                margin-right: 7px;
+                object-fit: cover;
+              "
+              [src]="assignee.slika"
+              *ngIf="assignee.uloga != 'Owner'"
+            />
+            <span
+              style="font-size: 15px; margin-right: 10px"
+              *ngIf="assignee.uloga != 'Owner'"
+              >{{ assignee.ime }} {{ assignee.prezime }}</span
+            >
+            <lucide-angular
+              *ngIf="assignee.uloga != 'Owner'"
+              (click)="removeMember(assignee, id)"
+              class="removeIcon"
+              name="X"
+              size="18"
+              style="margin-bottom: 3px; cursor: pointer"
+            ></lucide-angular>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <button style="background-color: transparent; border: none; display: flex; justify-content: center; align-items: center;">
+            <lucide-icon
+            size="32"
+            strokeWidth="1"
+            name="circle-plus"
+            class="editIcon"
+            data-bs-toggle="modal"
+            data-bs-target="#addMember"
+            style="cursor: pointer;"
+            ></lucide-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 1.5em">
+    <div style="display: flex; gap: 10px; margin-bottom: 1.5em">
+      <lucide-icon name="text"></lucide-icon>
+      <p style="color: gray; margin: 0">{{ "description" | translate }}</p>
+    </div>
+  </div>
+  <div class="editor">
+    <ngx-editor-menu
+      [editor]="editor"
+      [toolbar]="toolbar"
+      [style]="{ color: 'black' }"
+    >
+    </ngx-editor-menu>
+    <ngx-editor [editor]="editor" [(ngModel)]="editorContent"> </ngx-editor>
+  </div>
+</div>
+<ng-template #deleteDialog>
+  <h2 mat-dialog-title>Delete member</h2>
+  <mat-dialog-content>
+    {{'memberOwn' | translate}}
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+  </mat-dialog-actions>
+</ng-template>
+<p-confirmDialog
+  header="Confirm deletion"
+  icon="pi pi-exclamation-triangle"
+  acceptLabel="Yes"
+  rejectLabel="No"
+></p-confirmDialog>
+
+
+<div
+  class="modal fade"
+  id="addMember"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  (click)="onModalBackdropClick($event)"
+>
+  
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 400px; justify-content: center">
+      <div class="modal-header">
+        <h5
+          class="modal-title"
+          id="exampleModalLabel"
+          [style]="{ color: 'black' }"
+        >
+          {{ "addParticipants" | translate }}:    <b style="margin-left:10px;">{{ projectName }} </b> 
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+
+        ></button>
+      </div>
+      <div class="modal-body" style="height: 200px; font-size:24px">
+        <div>
+          <label
+            for="korisnikId"
+            style="margin-left: 20px; margin-top:2px"
+            [style]="{ color: 'black' }"
+            >{{ "user" | translate }}:</label
+          >
+          <select id="korisnikId" [(ngModel)]="this.korisnikId">
+            -<option *ngIf="korisnici.length == 0">
+              <p>{{'userDisplay' | translate}}</p>
+            </option> -
+            <ng-container *ngFor="let korisnik of korisnici">
+              <option [value]="korisnik.username" (click)="changeKorisnikId(korisnik.username)">
+                <p *ngIf="korisnici.length > 0">
+                  {{ korisnik.ime }} {{ korisnik.prezime }}
+                </p>
+              </option>
+            </ng-container>
+          </select>
+          <div *ngIf="ucitavanje && !korisnikId" style="color: red">
+            {{'selectUser' | translate}}
+          </div>
+          <br /><br />
+          <label
+            for="ulogaId"
+            style="margin-left: 20px; margin-top:2px"
+            [style]="{ color: 'black' }"
+            >{{ "role" | translate }}:</label
+          >
+          <select id="ulogaId" [(ngModel)]="ulogaId">
+            <option value="2">{{ "maintainer" | translate }}</option>
+            <option value="3">{{ "developer" | translate }}</option>
+            <option value="4">{{ "guest" | translate }}</option>
+          </select>
+          <div *ngIf="ucitavanje && !ulogaId" style="color: red">
+            {{'selectRole' | translate}}
+          </div>
+          <br /><br />
+        </div>
+      </div>
+      <div class="modal-footer" style="justify-content: center">
+        <button
+          id="button22"
+          (click)="addMember()"
+          [disabled]="!ulogaId || !korisnikId"
+          [ngStyle]="{
+            'background-color':
+              !ulogaId || !korisnikId || korisnici.length == 0 ? '#D9D9D9' : '',
+            color:
+              !ulogaId || !korisnikId || korisnici.length == 0 ? '#a3a3a3' : ''
+          }"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          {{ "addMember" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

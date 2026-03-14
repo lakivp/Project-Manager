@@ -1,0 +1,175 @@
+<div class="forma">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.0"
+    width="100.000000pt"
+    height="100.000000pt"
+    viewBox="0 0 500.000000 500.000000"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <g
+      transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
+      fill="#000000"
+      stroke="none"
+    >
+      <path
+        d="M1410 4311 l-1075 -599 -3 -1209 -2 -1209 1085 -603 1085 -603 1085 603 1085 603 -2 1209 -3 1209 -1075 599 c-591 329 -1082 598 -1090 598 -8 0 -499 -269 -1090 -598z m2030 -259 l935 -527 3 -1057 2 -1056 -940 -523 -940 -522 -940 522 -940 523 2 1056 3 1057 935 527 c514 290 937 527 940 527 3 0 426 -237 940 -527z"
+      />
+      <path
+        d="M1301 1184 c-12 -20 -21 -38 -19 -39 32 -25 1196 -709 1211 -712 15 -3 208 106 622 353 330 196 601 358 603 359 8 6 -42 76 -52 72 -6 -3 -265 -156 -576 -341 -344 -205 -575 -336 -590 -336 -15 0 -246 131 -590 336 -311 185 -570 338 -576 341 -6 2 -21 -12 -33 -33z"
+      />
+    </g>
+  </svg>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="loginUser()"
+    style="margin-top: 3em; z-index:30;"
+  >
+    <p-card
+      header="Login"
+      [style]="{
+        width: '380px',
+        background: 'rgba(255,255,255,0.7)',
+        color: '#263238',
+        'backdrop-filter': 'blur(10px)'
+      }"
+    >
+      <div class="field">
+        <label for="username">Username</label>
+        <input
+          [(ngModel)]="username"
+          type="text"
+          pInputText
+          formControlName="username"
+          class="w-full"
+          name="username"
+          placeholder="Type your username"
+        />
+        <!-- <small *ngIf="username.invalid && (username.dirty || username.touched)" class="block p-error">
+                    <div *ngIf="username.errors?.['required']">Username is required</div>
+                    <div *ngIf="username.errors?.['pattern']">Enter a valid Email</div>
+                </small>  -->
+        <span class="usericon"><i class="fas fa-user"></i></span>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          [(ngModel)]="password"
+          [type]="changetype ? 'password' : 'text'"
+          pInputText
+          formControlName="password"
+          class="w-full"
+          name="password"
+          placeholder="Type your password"
+        />
+        <span class="eyeicon" (click)="viewPassword()"
+          ><i [ngClass]="visible ? 'fas fa-eye' : 'fas fa-eye-slash'"></i
+        ></span>
+        <!-- <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+                    <div *ngIf="password.errors?.['required']">Password is required</div>
+                    <div *ngIf="password.errors?.['email']">Password should be valid</div>
+                </small>  -->
+      </div>
+      <div class="form-inline fr mt-4">
+        <a
+          id="forgot"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          class="font-weight-bold custom-link"
+          >Forgot password?</a
+        >
+      </div>
+      <p-button
+        id="butt"
+        label="Login"
+        styleClass="w-full"
+        [disabled]="loginForm.invalid"
+        type="submit"
+      >
+      </p-button>
+    </p-card>
+  </form>
+</div>
+<div style="
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1920 284" fill="none" style="z-index: 30">
+        <path d="M0 27.9998L20 49.2998C40 70.9998 80 113 120 102.7C160 91.9998 200 27.9998 240 43.9998C280 59.9998 320 156 360 172C400 188 440 124 480 124C520 124 560 188 600 204C640 220 680 188 720 166.7C760 145 800 135 840 156C880 177 920 231 960 246.7C1000 263 1040 241 1080 225.3C1120 209 1160 199 1200 156C1240 113 1280 38.9998 1320 11.9998C1360 -15.0002 1400 6.99982 1440 49.2998C1480 91.9998 1520 156 1560 188C1600 220 1640 220 1680 182.7C1720 145 1760 70.9998 1800 54.6998C1840 38.9998 1880 80.9998 1900 102.7L1920 124V284H1900C1880 284 1840 284 1800 284C1760 284 1720 284 1680 284C1640 284 1600 284 1560 284C1520 284 1480 284 1440 284C1400 284 1360 284 1320 284C1280 284 1240 284 1200 284C1160 284 1120 284 1080 284C1040 284 1000 284 960 284C920 284 880 284 840 284C800 284 760 284 720 284C680 284 640 284 600 284C560 284 520 284 480 284C440 284 400 284 360 284C320 284 280 284 240 284C200 284 160 284 120 284C80 284 40 284 20 284H0V27.9998Z" fill="black"></path>
+    </svg>
+</div>
+
+<div
+  class="modal fade loading-cursor"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  [ngClass]="{ 'loading-cursor': isSendingEmail }"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">
+          <span style="font-size: 25px; font-weight: 700; text-decoration: none"
+            >Forget your password?</span
+          ><br />
+          <small>Please provide your Email we will send the reset link</small>
+        </p>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group pt-3">
+          <div class="input-field">
+            <input
+              class="full-width-input"
+              [(ngModel)]="resetPasswordEmail"
+              (ngModelChange)="checkValidEmail($event)"
+              type="text"
+              placeholder="Type your email"
+            />
+          </div>
+        </div>
+        <small *ngIf="!resetPasswordEmail" class="text-danger"
+          >*Email is required</small
+        >
+        <small *ngIf="!isValidEmail && resetPasswordEmail" class="text-danger"
+          >*Email is invalid</small
+        >
+      </div>
+      <div class="modal-footer">
+        <button
+          id="closeBtn"
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          (click)="confirmToSend()"
+          class="btn btn-primary"
+          [disabled]="!isValidEmail"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-spinner
+  *ngIf="this.spinner"
+  color="warn"
+  style="position: absolute; top: 400px; left: 940px; z-index: 40"
+></mat-spinner>

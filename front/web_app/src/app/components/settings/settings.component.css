@@ -1,0 +1,135 @@
+h1{
+    color:black;
+    text-align: left;
+
+}
+#tabela{
+    background-color: white;
+    width: 1200px;
+    height: 700px;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+    top: 40px;
+    border: 0.5px solid rgb(213, 213, 213);
+    border-radius: 18px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+      rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+
+
+    }
+#tabela2{
+        border-right: 0.5px solid rgb(213, 213, 213);
+        box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+        padding: 20px 0px 40px 30px;
+        width: 399px;
+        height: 100%;
+        float: left;
+        }
+
+.material-icons{
+    font-family: 'Material Icons' !important;
+}
+.little{
+    position:relative;
+            
+    height: 30px;
+    margin-right: 10px;
+}
+
+#green-circle {
+    border:1px solid white;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(0, 255, 30);
+    border-radius: 50%; 
+    display: inline-block;
+
+    margin-right: 10px;
+    cursor: pointer;
+}
+#red-circle {
+    border:1px solid white;
+    width: 30px;
+    height: 30px; 
+    background-color: red;
+    border-radius: 50%; 
+    display: inline-block;
+
+    margin-right: 10px;
+    cursor: pointer;
+}
+#yellow-circle {
+    border:1px solid white;
+    width: 30px; 
+    height: 30px; 
+    background-color: rgb(217, 255, 0);
+    border-radius: 50%; 
+    display: inline-block;
+
+    margin-right: 10px;
+    cursor: pointer;
+}
+#gray-circle {
+    border:1px solid white;
+    width: 30px; 
+    height: 30px; 
+    background-color: rgb(116, 116, 116);
+    border-radius: 50%; 
+    display: inline-block;
+
+    margin-right: 10px;
+   cursor: pointer;
+}
+button{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 7px 40px 7px 40px;
+
+    border-radius: 30px;
+    margin-right: 50px;
+    position: relative;
+    left:40px
+}
+input{
+    background-color: white;
+    border: 1px solid rgb(213, 213, 213);
+    box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+    border-radius: 10px;
+    width: 130px;
+    text-align: center;
+    
+    font-weight: bold;
+
+}
+
+.kvad{
+    height: 25px;
+    width: 25px;
+    background-color: gray;
+    border: 1px solid black;
+    
+}
+
+select {
+    border-radius:7px;
+    box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+    margin-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+
+    border-radius: 4px;
+    padding: 3px 10px 3px 10px;
+    font-size: 16px;
+    color: #333;
+    width: 130px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 10px;
+    float: right;
+    border: 1px solid rgb(213, 213, 213);
+    box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+    border-radius: 10px;
+  }

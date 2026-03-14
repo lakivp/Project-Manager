@@ -1,0 +1,84 @@
+.mt-2,
+a {
+  color: black;
+}
+
+.field input {
+  background: rgba(255, 255, 255, 0);
+  color: black;
+}
+.field {
+  position: relative;
+}
+
+::placeholder {
+  color: black;
+  font-size: 13px;
+}
+
+.forma {
+  min-width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 80vh;
+  z-index: 20;
+  padding: 20px;
+}
+
+#butt {
+  width: 100%;
+  padding-top: 20px;
+}
+
+:host ::ng-deep .p-card {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 0.5em 1em;
+}
+:host ::ng-deep .p-card-title {
+  width: 100%;
+  text-align: center;
+}
+:host ::ng-deep .p-button {
+  border-radius: 5px;
+}
+
+.naslov {
+  text-align: center;
+  color: #263238;
+}
+
+.custom-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.loading-cursor {
+  cursor: wait;
+}
+
+.eyeicon {
+  position: absolute;
+  top: 67%;
+  transform: translateY(-50%);
+  right: 5%;
+  cursor: pointer;
+}
+
+.usericon {
+  position: absolute;
+  top: 69%;
+  transform: translateY(-50%);
+  right: 5%;
+}
+
+.modal-body input {
+  border-radius: 5px;
+}

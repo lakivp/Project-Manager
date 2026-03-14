@@ -1,0 +1,56 @@
+<br />
+<div style="float: left; height:0px; position:relative; left:22px; bottom:10px">
+  <h1 id="titleDateSett" style="float: left; margin-right:100px">{{projectName}}</h1><br>
+  <h1 id="colDateSett" style="float: left; font-size: 14px; color:gray">{{end}} - <b style="text-shadow:-1px -1px 0 #fff,   1px -1px 0 #fff,-1px 1px 0 #fff, 1px 1px 0 #fff;" [style]="{'color':colorWarning}">{{TextDate}}</b></h1><br><br><br>
+</div>
+<app-new-task *ngIf="isOwner"></app-new-task>
+<br /><br />
+
+<div class="prikaz-container">
+  <a
+    (click)="showView('pregled')"
+    [ngClass]="{ prikazProjekta: true, active: currentView === 'pregled' }"
+    class="prikazProjekta"
+  >
+  <lucide-icon name="text-search"></lucide-icon> {{'overview' | translate}}
+  </a>
+  <a
+    (click)="showView('gant')"
+    [ngClass]="{ prikazProjekta: true, active: currentView === 'gant' }"
+    class="prikazProjekta"
+  >
+  <lucide-icon name="square-gantt-chart"></lucide-icon> {{'gantt' | translate}}
+  </a>
+  <a
+    (click)="showView('kanban')"
+    [ngClass]="{ prikazProjekta: true, active: currentView === 'kanban' }"
+    class="prikazProjekta"
+  >
+  <lucide-icon name="square-kanban"></lucide-icon> {{'kanban' | translate}}
+  </a>
+  <a
+    (click)="showView('tabela')"
+    [ngClass]="{ prikazProjekta: true, active: currentView === 'tabela' }"
+    class="prikazProjekta"
+  >
+  <lucide-icon name="panels-top-left"></lucide-icon> {{'table' | translate}}
+  </a>
+  <!-- <div style="display: flex">
+    <app-project-participants style="flex: 1"></app-project-participants>
+  </div> -->
+</div>
+
+<div *ngIf="currentView === 'pregled'" class="overview">
+  <app-project-overview (projectNameChange)="handleProjectNameChange($event)"></app-project-overview>
+</div>
+<div *ngIf="currentView === 'kanban'" class="kanban">
+  <app-task-view [route]="'projectView/:id'"></app-task-view>
+</div>
+
+<div *ngIf="currentView === 'tabela'">
+  <app-task-table></app-task-table>
+</div>
+
+<div *ngIf="currentView === 'gant'">
+  <app-gantt></app-gantt>
+</div>

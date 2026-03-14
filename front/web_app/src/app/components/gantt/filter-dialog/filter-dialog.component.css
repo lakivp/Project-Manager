@@ -1,0 +1,12 @@
+.close-button {
+    position: absolute !important;
+    top: 8px ;
+    right: 5px !important;
+    width: 24px;
+    height: 24px;
+  }
+
+  .mat-dialog-container {
+    padding: 0 !important;
+    box-shadow: none;
+  }

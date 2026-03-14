@@ -1,0 +1,20 @@
+.mt-2,a{
+    color:black;
+}
+
+.field input{
+    background: rgba(255,255,255,0.0);
+    color:black;
+}
+
+::placeholder{
+    color:black;
+    font-size: 13px;
+}
+
+.forma{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 90vh;
+  }

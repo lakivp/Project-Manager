@@ -1,0 +1,12 @@
+<div id="container">
+  <div class="justify-content-center align-items-center h-full">
+    <p-toast></p-toast>
+    <app-navbar
+      *ngIf="showSidebar"
+      (onToggleSideNav)="onToggleSideNav($event)"
+    ></app-navbar>
+    <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth">
+    </app-body>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,366 @@
+<p-confirmDialog
+  header="Confirm deletion"
+  icon="pi pi-exclamation-triangle"
+  rejectLabel="No"
+  acceptLabel="Yes"
+></p-confirmDialog>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ "filterProperties" | translate }}
+        </h5>
+        <br />
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <label for="startDate">{{ "startDate" | translate }}:</label>
+            <p-calendar
+              id="startDate"
+              [(ngModel)]="startDate"
+              dateFormat="dd.mm.yy"
+            ></p-calendar>
+          </div>
+          <div class="col">
+            <label for="endDate">{{ "endDate" | translate }}:</label>
+            <p-calendar
+              id="endDate"
+              [(ngModel)]="endDate"
+              dateFormat="dd.mm.yy"
+            ></p-calendar>
+          </div>
+        </div>
+
+        <br />
+        <label for="name">{{'name' | translate}}:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="filterName" style="border: 1px solid #ccc; border-radius: 0.5rem;height: 30px; width:375px;"/>
+        <br /><br />
+        <label for="name">{{ "priority" | translate }}:</label>
+        <label class="image-checkbox">
+          <input type="checkbox" class="image-checkbox-input" [(ngModel)]="highPriorityChecked" />
+          <div class="red-circle" style="display: inline-block; width: 18px;margin-left: 2px;margin-right: 2px; margin-top: 3px;
+            height: 18px;
+            background-color: red;
+            border-radius: 50%;"></div>{{'high' | translate}}
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox" class="image-checkbox-input" [(ngModel)]="normalPriorityChecked"/>
+          <div class="red-circle" style="display: inline-block; width: 18px;margin-left: 2px; margin-top: 3px;
+            height: 18px;
+            background-color: rgb(255, 251, 0);
+            border-radius: 50%;"></div>{{'medium' | translate}}
+        </label>
+        <label class="image-checkbox" style="margin-left: 10px;">
+          <input type="checkbox" class="image-checkbox-input" [(ngModel)]="lowPriorityChecked" />
+          <div class="red-circle" style="display: inline-block; width: 18px;margin-left: 2px;margin-right: 5px; padding-top: 3px;
+            height: 18px;
+            background-color: rgb(47, 189, 0);
+            border-radius: 50%;"></div>{{'low' | translate}}
+        </label>
+        <br />
+        <div class="row">
+          <div class="col">
+            <label for="roleSelect">{{ "role" | translate }}: </label>
+            <select
+              id="roleSelect"
+              [(ngModel)]="selectedRole"
+              style="
+                border: 1px solid #ccc;
+                border-radius: 0.5rem;
+                height: 30px;
+              "
+            >
+              <option value="" selected>{{ "chooseRole" | translate }}</option>
+              <option value="Developer">{{ "developer" | translate }}</option>
+              <option value="Maintainer">{{ "maintainer" | translate }}</option>
+              <option value="Owner">{{ "owner" | translate }}</option>
+              <option value="Guest">{{ "guest" | translate }}</option>
+            </select>
+          </div>
+          <div class="col">
+            <label>{{'progress' | translate}}:</label>
+            <div style="display: flex; align-items: center;">
+                <input type="checkbox" id="greaterThan50" name="greaterThan50" [(ngModel)]="greaterThan50Checked" />
+                <label for="greaterThan50" style="color: blue; margin-left: 4px;"> >50%</label>
+                <input type="checkbox" id="lessThan50" name="lessThan50" [(ngModel)]="lessThan50Checked" style="margin-left: 10px;" />
+                <label for="lessThan50" style="color: blue; margin-left: 4px;"> <50%</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="filterProjects1()"
+        >
+          {{ "saveChanges" | translate }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="resetFilters()"
+          style="margin-right: 15%; width: 130px"
+        >
+          {{ "resetFilters" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="applied-filters" style="width: 1280px;">
+  <span *ngFor="let filter of appliedFilters; let i = index">
+    <span class="filter-info">
+      {{ filter }} 
+      <span class="remove-filter-icon" (click)="removeFilter(i)">
+        <i class="fas fa-times"></i>
+      </span>
+    </span>
+  </span>
+</div>
+
+
+<!-- project-table.component.html -->
+<div id="tabela1"  [ngClass]="{'expanded-table': isTableExpanded, 'collapsed-table': !isTableExpanded}">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <lucide-icon
+              name="list-filter"
+              color="black"
+              class="hover-pointer"
+            ></lucide-icon>
+          </button>
+        </th>
+        <th class="header">
+          <div class="flex-container">
+            {{ "projectName" | translate }}
+            <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%; margin-left: 10px;"
+              (click)="sortBy('naziv')"
+              class="hover-pointer"
+            />
+          </div>
+        </th>
+        <th class="header">
+          <div class="flex-container">
+            {{ "priority" | translate }}
+            <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%; margin-left: 10px;"
+              (click)="sortBy('prioritet')"
+              class="hover-pointer"
+            />
+          </div>
+        </th>
+        <th class="header">
+          {{ "role" | translate }}
+          <img
+            src="assets/images/sort.png"
+            width="16"
+            height="16"
+            style="opacity: 50%; margin-left: 10px;"
+            (click)="sortByRole()"
+            class="hover-pointer"
+          />
+        </th>
+        <th class="header">
+          <div class="flex-container">
+            {{'progress' | translate}}
+            <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%; margin-left: 10px;"
+              class="hover-pointer"
+            />
+          </div>
+        </th>
+        <th class="header">
+          <div class="flex-container">
+            {{ "startDate" | translate }}
+            <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%; margin-left: 10px;"
+              (click)="sortByDate('pocetak')"
+              class="hover-pointer"
+            />
+          </div>
+        </th>
+        <th class="header">
+          <div class="flex-container">
+            <span>{{ "endDate" | translate }}</span>
+            <img
+              src="assets/images/sort.png"
+              width="16"
+              height="16"
+              style="opacity: 50%; margin-left: 10px;"
+              (click)="sortByDate('kraj')"
+              class="hover-pointer"
+            />
+          </div>
+        </th>
+        <th>
+          <button
+            (click)="toggleTableSize()"
+            *ngIf="!isTableExpanded"
+            style="background-color: transparent; border: none; "
+          >
+          <lucide-icon name="expand"></lucide-icon>
+          </button>
+          <button
+            (click)="toggleTableSize()"
+            *ngIf="isTableExpanded"
+            style="background-color: transparent; border: none"
+          >
+          <lucide-icon name="minimize-2"></lucide-icon>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="settTab">
+      <tr *ngFor="let project of pagedProjects" style="background-color: white">
+        <td>
+          <a [routerLink]="['/projectView', project.id]" class="text-link">
+            <img
+              src="assets/images/externalLink.png"
+              width="24"
+              height="24"
+              class="hover-pointer"
+            />
+          </a>
+        </td>
+        <td>
+          <a
+            [routerLink]="['/projectView', project.id]"
+            class="text-link hover-pointer"
+            style="text-decoration: none; color: black; margin-left: 20px;"
+            >{{ project.naziv }}</a
+          >
+        </td>
+        <td>
+          <ng-container [ngSwitch]="project.prioritet">
+            <div
+              *ngSwitchCase="'High'"
+              class="red-circle"
+              style="
+                width: 20px;
+                height: 20px;
+                background-color: red;
+                border-radius: 50%;
+                margin-left: 20px;
+              "
+            ></div>
+            <div
+              *ngSwitchCase="'Medium'"
+              class="red-circle"
+              style="
+                width: 20px;
+                height: 20px;
+                background-color: rgb(255, 255, 9);
+                border-radius: 50%;
+                margin-left: 20px;
+
+              "
+            ></div>
+            <div
+              *ngSwitchCase="'Low'"
+              class="red-circle"
+              style="
+                width: 20px;
+                height: 20px;
+                background-color: rgb(47, 189, 0);
+                border-radius: 50%;
+                margin-left: 20px;
+
+              "
+            ></div>
+          </ng-container>
+        </td>
+        <td [ngStyle]="{ color: getRoleColor(project.role) }">
+          {{ project.role }}
+        </td>
+        <td>
+          <p-progressBar
+            [value]="project.progress_percentage"
+            [showValue]="false"
+          ></p-progressBar>
+        </td>
+        <td>{{ project.pocetak }}</td>
+        <td>{{ project.kraj }}</td>
+        <td>
+          <div class="dial-buttons-container" *ngIf="isProjectManager">
+            <button
+              type="button"
+              class="p-speed-dial-button"
+              style="border: none; padding-top: 5px"
+              (click)="toggleAdditionalButtons(project)"
+            >
+              <i class="pi pi-ellipsis-v" style="padding-right: 2px"></i>
+            </button>
+            <div
+              *ngIf="project.showAdditionalButtons"
+              class="additional-buttons-container"
+            >
+              <button
+                type="button"
+                class="p-speed-dial-button"
+                (click)="confirmDelete(project.id)"
+              >
+                <i class="pi pi-trash"></i>
+              </button>
+              <button
+                type="button"
+                class="p-speed-dial-button"
+                [routerLink]="['/projectView', project.id]"
+              >
+                <i class="pi pi-pencil"></i>
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<mat-paginator
+  class="settingClassPages"
+  [pageSize]="pageSize"
+  [length]="projects && projects.length"
+  (page)="onPageChange($event)"
+  style="position: absolute;
+  top: 72em;"
+>
+</mat-paginator>

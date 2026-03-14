@@ -1,0 +1,197 @@
+#buttonforCreatiing {
+  background-color: black;
+  color: white;
+  padding: 7px 40px 7px 40px;
+  position: absolute;
+  /* left: 70%; */
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.ui-calendar .ui-datepicker {
+  height: 200px;
+}
+h3 {
+  display: inline;
+}
+h5 {
+  margin-right: 20px;
+  display: inline;
+}
+input {
+  border-radius: 10px;
+  width: 300px;
+  height: 30px;
+  padding: 15px;
+}
+.progCompl {
+  display: flex;
+
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 18px;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  margin-bottom: 40px;
+  padding: 30px 20px 20px 20px;
+  width: 320px;
+  height: 140px;
+  background-color: white;
+}
+
+.progCompl img {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+}
+.projects {
+  height: 10px;
+  position: relative;
+  left: 550px;
+  bottom: 300px;
+}
+
+#buttonforCreatiing {
+  background-color: black;
+  color: white;
+  padding: 7px 40px 7px 40px;
+  float: right;
+  border-radius: 30px;
+  margin-right: 15%;
+}
+.modal-body {
+  margin: auto;
+  width: 800px;
+  padding-top: 30px;
+}
+#gorDateP {
+  float: left;
+  position: relative;
+  right: 181px;
+
+  height: 19px;
+  width: 187px;
+}
+#finalDateRight {
+  float: right;
+  height: 19px;
+
+  width: 187px;
+}
+#addTask {
+  background-color: black;
+  color: white;
+  padding: 7px 40px 7px 40px;
+  align-items: center;
+  border-radius: 30px;
+  position: relative;
+  bottom: 20px;
+}
+#cancel2 {
+  background-color: rgb(215, 215, 215);
+  color: rgb(0, 0, 0);
+  padding: 7px 40px 7px 40px;
+  align-items: center;
+  border-radius: 30px;
+  position: relative;
+  bottom: 20px;
+  left: 30px;
+}
+
+.rad {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  top: 3px;
+  margin-right: 20px;
+}
+#exampleModalLabel {
+  margin-left: 10px;
+}
+
+textarea {
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#levo{
+    float: left;
+    height: 320px;
+    width: 590px;
+}   
+#desno{
+    float: right;
+    position:relative;
+    bottom: 17px;
+    right: 30px;
+    width: 100px;
+}
+
+.innerCircle {
+  background-color: rgba(225, 225, 225, 0.828);
+  border-radius: 20px;
+  padding: 5px 18px 5px 0px;
+}
+.divZaAssign {
+  border-radius: 16px;
+  padding: 3px 5px 3px 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.innerCircle span {
+  position: relative;
+
+  left: 3px;
+}
+
+.innerCircle {
+  background-color: rgb(189, 0, 0);
+  border: 5px solid black;
+  color: white;
+  border-radius: 80px;
+  padding: 0px 18px 0px 0px;
+  width: fit-content;
+  display: inline-block;
+}
+
+.innerCircle img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.innerCircle2 span {
+  position: relative;
+  bottom: 0.5px;
+  left: 3px;
+}
+
+.innerCircle2 {
+  background-color: black;
+  color: white;
+  border-radius: 80px;
+  padding: 0px 18px 0px 0px;
+  width: fit-content;
+  display: inline-block;
+}
+
+.innerCircle2 img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+select {
+  border-radius:7px;
+  box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+  padding: 3px 10px 3px 10px;
+  border-radius: 4px;
+
+  font-size: 16px;
+  color: #333;
+  width: 130px;
+
+  float: right;
+  border: 3px solid rgb(213, 213, 213);
+  box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+  border-radius: 10px;
+}

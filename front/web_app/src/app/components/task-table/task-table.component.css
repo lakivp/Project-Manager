@@ -1,0 +1,143 @@
+.hover-pointer {
+  cursor: pointer;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+.hover-pointer:active {
+  cursor: grabbing;
+}
+#tabela1 {
+  background-color: white;
+  height: 655px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  width: 1500px; 
+  border: 1px solid rgb(213, 213, 213);
+  margin-top: 0.2em;
+}
+
+table {
+  width: 1498px; 
+  table-layout: auto; 
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 2; 
+  padding: 2px;
+  white-space: nowrap;
+}
+tr{
+  height: 38px;
+}
+th,
+td {
+  padding: 1px;
+  padding-left: 20px;
+  padding-right: 20px; /* Smanjite desni padding za ravnomerniji raspored */
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+}
+th {
+  border: none;
+  background-color: #e4e4e4;
+}
+tr{
+  border-bottom: 0.5px solid #ddd;
+}
+thead{
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+@media (max-width: 800px) {
+  #tabela1 {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  th,
+  td {
+    padding: 3px; /* Smanjite padding po potrebi */
+  }
+}
+
+
+th:first-child,
+td:first-child {
+  width: 10px;
+  padding-left: 10px;
+  padding-right: 40px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 30px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+tbody tr:hover {
+  background-color: #f2f2f2; /* Promenite boju pozadine kada se miš nalazi iznad reda */
+  transition: background-color 0.3s ease; /* Dodajte prelazni efekat za lepši izgled */
+}
+
+tbody tr:hover td {
+  color: #333; /* Promenite boju teksta u redovima kada se miš nalazi iznad */
+}
+
+/* Promenite boju ikone kada se miš nalazi iznad reda */
+tbody tr:hover img {
+  filter: brightness(95%); /* Smanjite svetlinu slike */
+}
+
+@media (max-width: 200px) {
+  #tabela1 {
+    width: 90%; /* Postavite širinu tabele na 90% ekrana */
+    max-height: 80%; /* Postavite maksimalnu visinu tabele na 80% visine ekrana */
+    overflow-y: auto; /* Dodajte vertikalni scrollbar ako je potrebno */
+  }
+
+  th,
+  td {
+    padding: 3px; /* Smanjite padding po potrebi */
+  }
+
+  th:last-child,
+  td:last-child {
+    width: 80px; /* Promenite širinu poslednje ćelije po potrebi */
+  }
+}
+th:last-child,
+  td:last-child {
+    margin-left: 10px;
+    width: 80px; /* Promenite širinu poslednje ćelije po potrebi */
+  }
+
+.filtered-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Razmak između filter opcija */
+}
+
+.filtered-option {
+  padding: 4px 8px; /* Padding oko filter opcije */
+  background-color: #f0f0f0; /* Sivkasta pozadinska boja */
+  border-radius: 2.9rem;
+  border-radius: 4px; /* Zaobljeni uglovi */
+}
+.ui-dialog-footer button.ui-button-success {
+  background-color: black; /* Promena boje za "Yes" dugme */
+  color: white; /* Promena boje teksta na "Yes" dugmetu */
+}
+
+.ui-dialog-footer button.ui-button-secondary {
+  background-color: black; /* Promena boje za "No" dugme */
+  color: white; /* Promena boje teksta na "No" dugmetu */
+}
+
+.settingClassPages {
+  background-color: transparent;
+}

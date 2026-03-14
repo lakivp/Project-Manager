@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+html,
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+  /* background-color: #d9d9d9; */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border-left: 0;
+  border-right: 0;
+  background-color: gray;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup {
+  font-weight: bold;
+}
+
+.ng-select {
+  font-size: smaller;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+}
+
+.ng-select-container {
+  border: 1px solid #d9d9d9;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 4px;
+}
+
+.ng-select .ng-dropdown-panel {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  margin-top: 0.5px;
+  background-color: white;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+}
+
+.ng-select .ng-dropdown-panel-items .ng-option {
+  padding: 0.2em 1em 0.2em 1em;
+}
+.ng-select .ng-dropdown-panel-items .ng-option:hover {
+  background-color: #d9d9d9;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.body{
+  min-height: 100vh !important;
+}

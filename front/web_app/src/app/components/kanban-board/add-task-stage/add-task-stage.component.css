@@ -1,0 +1,72 @@
+.stage {
+  height: 40px;
+  width: 250px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  /* padding-top: 6px; */
+  padding-left: 10px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+.closeIcon {
+  cursor: pointer;
+  align-self: flex-end;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 280px;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  border-radius: 8px;
+  padding: 1em;
+  background-color: white;
+  z-index: 50;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.container > p {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+button {
+  padding: 12px 10px 12px 10px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 110px;
+}
+
+.addBtn {
+  background-color: black;
+  color: white;
+}
+
+.cancelBtn {
+  background-color: #c1c1c1;
+  color: #404040;
+}

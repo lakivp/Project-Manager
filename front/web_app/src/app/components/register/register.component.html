@@ -1,0 +1,63 @@
+<div class="forma">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+        <p-card header="Create account" [style]="{width: '380px','background':'rgba(255,255,255,0.2)','color':'black'}">
+            <div class="field">
+                <label for="ime">Name</label>
+                <input [(ngModel)]="ime" type="text" pInputText formControlName="ime" class="w-full" name="ime" placeholder="Type your name"/>
+                <!-- <small *ngIf="username.invalid && (username.dirty || username.touched)" class="block p-error">
+                    <div *ngIf="username.errors?.['required']">Username is required</div>
+                    <div *ngIf="username.errors?.['pattern']">Enter a valid Username</div>
+                </small> -->
+            </div>
+            <div class="field">
+                <label for="prezime">Lastname</label>
+                <input [(ngModel)]="prezime" type="text" pInputText formControlName="prezime" class="w-full" name="prezime" placeholder="Type your lastname"/>
+                <!-- <small *ngIf="username.invalid && (username.dirty || username.touched)" class="block p-error">
+                    <div *ngIf="username.errors?.['required']">Username is required</div>
+                    <div *ngIf="username.errors?.['pattern']">Enter a valid Username</div>
+                </small> -->
+            </div>
+            
+            <div class="field">
+                <label for="username">Username</label>
+                <input [(ngModel)]="username" type="text" pInputText formControlName="username" class="w-full" name="username" placeholder="Type your username"/>
+                <!-- <small *ngIf="username.invalid && (username.dirty || username.touched)" class="block p-error">
+                    <div *ngIf="username.errors?.['required']">Username is required</div>
+                    <div *ngIf="username.errors?.['pattern']">Enter a valid Username</div>
+                </small> -->
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input [(ngModel)]="email" type="email" pInputText formControlName="email" class="w-full" name="email" placeholder="Type your email"/>
+                <!-- <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+                    <div *ngIf="email.errors?.['required']">Email is required</div>
+                    <div *ngIf="email.errors?.['email']">Email should be valid</div>
+                </small> -->
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input [(ngModel)]="password" type="password" pInputText formControlName="password" class="w-full" name="password" placeholder="Type your password"/>
+                <!-- <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+                    <div *ngIf="password.errors?.['required']">Password is required</div>
+                    <div *ngIf="password.errors?.['email']">Password should be valid</div>
+                </small> -->
+            </div>
+            <!-- <div class="field">
+                <label for="confirmPassword">Confirm password</label>
+                <input type="password" pInputText formControlName="confirmPassword" class="w-full" name="confirmPassword" placeholder="Confirm Password"/>
+                 <small *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="block p-error">
+                    <div *ngIf="confirmPassword.errors?.['required']">Confirm the password</div>
+                </small> 
+                 <small class="block p-error" *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid">
+                    Password should match 
+                </small> 
+            </div> -->
+            <p-button label="Sign up" styleClass="w-full" [disabled]="registerForm.invalid" type="submit">
+    
+            </p-button>
+            <div class="mt-2">
+                Have already an account? <a routerLink="/login">Login</a>
+            </div>
+        </p-card>
+    </form>
+    </div>

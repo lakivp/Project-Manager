@@ -1,0 +1,186 @@
+#container {
+  display: flex;
+  flex-direction: column;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  border-radius: 8px;
+  width: 1000px;
+  padding: 1em 2em 1em 2em;
+  margin-bottom: 1em;
+  background-color: white;
+  margin-top: 1.5em;
+}
+
+table{
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0.1px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0.1px;
+}
+
+.pariticpants {
+  display: flex;
+  flex-direction: column;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  border-radius: 8px;
+  min-width: 180px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: white;
+  padding: 1em;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+}
+
+.grid-item {
+  padding-bottom: 1em;
+  min-width: 200px;
+}
+
+#gorDateP {
+  height: 80px;
+  width:110px;
+  position:relative;
+  bottom:12px
+}
+
+::ng-deep .p-calendar .p-inputtext {
+  padding: 3px;
+  width: 200px;
+  height: 46px;
+}
+
+
+select {
+  width: 110px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.button {
+  padding: 10px 20px 10px 20px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.viewAllBtn {
+  border: 1px solid black;
+}
+
+.viewAllBtn:hover {
+  color: #dd4545;
+  border: 1px solid red;
+}
+
+.editIcon:hover {
+  color: #dd4545;
+}
+
+span {
+  white-space: nowrap;
+}
+
+.removeIcon {
+  color: gray;
+}
+
+.removeIcon:hover {
+  color: #dd4545;
+}
+
+th{
+  padding: 5px;
+  padding-left: 35px;
+  border-bottom: 1px solid #d9d9d9;
+  font-weight: 600;
+  font-size: 15px;
+}
+td{
+  padding-left: 35px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 15px;
+  color:rgb(60, 60, 60);
+}
+th:nth-child(2){
+  padding-left: 15px;
+
+}
+td:first-child{
+  padding-left: 25px;
+}
+td:nth-child(2){
+  padding-left: 15px;
+
+}
+td:not(:first-child){
+  padding-right: 20px;
+}
+
+#projectmemberform {
+  color: black;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+#button22 {
+  background-color: black;
+  color: white;
+  padding: 7px 40px 7px 40px;
+
+  /* left: 70%; */
+  border-radius: 30px;
+
+}
+
+button[disabled] {
+  cursor: progress; /* Promeni kursor u obliku loadovanja kada je dugme onemogućeno */
+}
+
+#projectmemberform:active {
+  cursor: pointer; /* Promena kursora u šaku kada se klikne na dugme */
+}
+
+#projectmemberform:active {
+  cursor: grabbing; /* Promena kursora u šaku kada se klikne na dugme */
+}
+
+.btn-close {
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  cursor: pointer;
+}
+
+.btn-close:active {
+  cursor: grabbing;
+}
+
+.btn {
+  margin-top: 3px;
+}
+select {
+  border-radius:7px;
+  box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+  padding: 3px 10px 3px 10px;
+  border-radius: 4px;
+  width: 150px;
+  font-size: 16px;
+  color: #333;
+
+  float: right;
+  border: 2px solid rgb(213, 213, 213);
+  box-shadow: 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+  border-radius: 10px;
+  position: relative;
+  top:5.6px;
+}

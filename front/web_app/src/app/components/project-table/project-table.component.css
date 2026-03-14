@@ -1,0 +1,270 @@
+.remove-filter-icon {
+  cursor: pointer; /* Postavljamo kursor na prst kada se nalazi iznad ikonice */
+}
+
+.remove-filter-icon:hover {
+  cursor: pointer; /* Kada korisnik klikne na ikonicu, menja se kursor u šaku */
+}
+.remove-filter-icon:active {
+  cursor: grabbing; /* Kada korisnik klikne na ikonicu, menja se kursor u šaku */
+}
+
+.hover-pointer {
+  cursor: pointer;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+.hover-pointer:active {
+  cursor: grabbing;
+}
+
+tbody tr:hover {
+  background-color: #f2f2f2;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover td {
+  color: #333;
+}
+/* Filteri iznad tabele*/
+.applied-filters {
+  position: absolute;
+}
+
+.applied-filters span {
+  margin-right: 2px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  position: relative;
+  white-space: nowrap;
+  word-break: break-word;
+}
+
+
+
+table {
+  background-color: white;
+  width: 100%;
+}
+tbody td{
+  margin-left: 18px;
+}
+#tabela1 {
+  position: absolute;
+  background-color: white;
+  width: 1240px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0.5px,
+    rgba(0, 0, 0, 0.06) 0px 1px 3px 0.5px;
+  height: 426px;
+  margin-top: 1.8em;
+}
+@media (max-width: 1140px) {
+  #tabela1 {
+    width: 950px;
+    left: 15%;
+    right: 10%;
+    position: relative;
+  }
+}
+@media (max-width: 900px) {
+  #tabela1 {
+    width: 870px;
+    left: 20%;
+    right: 15%;
+    position: relative;
+  }
+}
+@media (max-width: 870px) {
+  #tabela1 {
+    width: 700px;
+    left: 25%;
+    right: 7%;
+    position: relative;
+  }
+}
+@media (max-width: 800px) {
+  #tabela1 {
+    width: 525px;
+    left: 15%;
+    right: 7%;
+    position: fixed;
+  }
+}
+
+thead {
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  z-index: 40;
+  position: relative;
+  height: 45px;
+  background-color: #e4e4e4;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 2; 
+  padding: 3px;
+  white-space: nowrap;
+}
+tr{
+  height: 38px;
+}
+th,
+td {
+  border-bottom: 0.5px solid #ddd;
+  padding: 1px;
+  padding-left: 20px;
+  padding-right: 20px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+th {
+  background-color: #e4e4e4;
+  border: none;
+}
+th:nth-child(1) {
+  width: 10px; 
+  padding-left: 18px; 
+  padding-right: 9px; 
+}
+td:nth-child(1) {
+  width: 10px; 
+  padding-left: 28px; 
+  padding-right: 6px; 
+}
+
+td:nth-child(3) {
+  padding-left: 20px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+width: 10px; 
+  padding-left: 5px; 
+  padding-right: 65px; 
+}
+
+th:nth-last-child(2),
+td:nth-last-child(2),
+th:last-child,
+td:last-child {
+  width: 10px;
+  padding-right: 30px;
+}
+
+.btn.btn-primary {
+  border-radius: 15px;
+  border: none;
+  background-color: transparent;
+}
+
+.btn.btn-secondary:hover,
+.btn.btn-secondary:hover {
+  background-color: rgb(53, 52, 52);
+}
+
+.modal-dialog {
+  position: absolute;
+  top: 20%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+}
+
+.btn.btn-secondary {
+  border-radius: 15px;
+  background-color: black;
+  margin-right: 15%;
+}
+
+.btn.btn-secondary:active {
+  cursor: grabbing;
+}
+
+.modal-body label {
+  display: inline-block;
+  width: 90px;
+}
+
+label.img-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+label.img-checkbox img {
+  margin-right: 20px;
+}
+label.img-checkbox input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.header {
+  text-align: left; 
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-container img {
+  margin-left: 5px;
+}
+
+/*::ng-deep span.ng-tns-c3632051545-2,::ng-deep span.ng-tns-c3632051545-3 {
+  height: 35px;
+}*/
+::ng-deep div.p-progressbar.p-component.p-progressbar-determinate {
+  height: 13px;
+  width: 60%;
+}
+.p-speed-dial-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent; 
+  transition: background-color 0.3s; 
+  border: 1px solid rgba(0, 0, 0, 0.3); 
+}
+
+.p-speed-dial-button:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); 
+}
+
+.p-speed-dial-button:active {
+  cursor: grabbing; 
+}
+
+.dial-buttons-container {
+  display: flex;
+  position: static;
+  margin-left: 3px;
+}
+
+.additional-buttons-container {
+  margin-left: 3px;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  pointer-events: none; 
+}
+
+.settingClassPages {
+  background-color: transparent;
+}

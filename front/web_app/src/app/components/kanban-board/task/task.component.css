@@ -1,0 +1,100 @@
+.taskContainer {
+  background-color: white;
+  border-radius: 20px;
+  padding: 1em 1em 1em 1em;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  width: 100%;
+  cursor: pointer;
+}
+.taskHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskCode {
+  font-size: x-small;
+  font-weight: 600;
+  color: #5c5c5c;
+}
+
+.taskFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.assignee {
+  width: 50px;
+  height: 50px;
+  /* background-color: #5C5C5C; */
+  border-radius: 100%;
+  object-fit: cover;
+  /* background-image: url("../../images/pfp.jpg"); */
+  /* background-size: cover; */
+}
+
+.timeReq {
+  color: #dd4545;
+  background-color: #ffc9c9;
+  padding: 0.3em 1em 0.3em 1em;
+  border-radius: 20px;
+  font-size: small;
+  font-weight: 500;
+  margin: 0;
+}
+
+.scaleAndTime {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.scale {
+  display: flex;
+  width: 100%;
+  height: 4px;
+}
+
+.timePassed {
+  background-color: #dd4545;
+  width: 60%;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.timeLeft {
+  background-color: #ffc9c9;
+  width: 40%;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.timeNeeded {
+  color: #dd4545;
+  padding: 0.3em 1em 0.5em 1em;
+  font-size: small;
+  font-weight: 500;
+  margin: 0;
+}
+
+.mat-icon {
+  transition: box-shadow 0.3s ease;
+}
+
+.mat-icon:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.pfp{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  object-fit: cover;
+}

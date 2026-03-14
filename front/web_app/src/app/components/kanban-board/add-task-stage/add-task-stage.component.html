@@ -1,0 +1,13 @@
+<div class="modal">
+  <mat-icon class="closeIcon" (click)="close()">close</mat-icon>
+  <div class="container">
+      <p>{{'insertTaskStage' | translate}}</p>
+      <input class="stage" id="stage" title="Stage" placeholder="{{'insertStage' | translate}}" (keyup)="inputChange($event)"/>
+      <div class="buttons">
+        <button class="cancelBtn" (click)="close()">{{'cancel' | translate}}</button>
+        <button class="addBtn" (click)="addTaskStage()">{{'add' | translate}}</button>
+      </div>
+  </div>
+</div>
+
+
