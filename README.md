@@ -18,9 +18,3 @@ Alat omogućava sledeće funkcionalnosti: <br>
   o Filtriranje projekata, aktivnosti, učesnika. <br>
   o Obaveštavanje. <br>
   o Kolaboracija između učesnika nekog projekta ili aktivnosti (komentari i dokumenti). <br>
-
-Alat je potrebno razviti korišćenjem savremenih web tehnologija, tako da bude omogućen rad na <br>
-fiksnim i prenosnim uređajima (desktop, tablet, telefon). Za potrebe razvoja web aplikacija koristiti .NET <br>
-Core i Angular biblioteku. Za vizuelizaciju podataka koristiti savremene biblioteke i komponente. Za čuvanje <br>
-podataka koristiti odgovarajuće baze otvorenog koda. Klijentski deo aplikacije treba da ima mogućnost <br>
-izvršavanja na svim standardnim web pretraživačima. <br>
