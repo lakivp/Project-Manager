@@ -6,7 +6,6 @@ Tehnologije koje su korišćene:<br>
   o .Net<br>
 Baza: MySql<br>
 
-Zahtevane funkcionalnosti <br>
 Projekat je namenjen vođama timova za razvoj softvera, ali i svim ostalim učesnicima u razvoju.  <br>
 
 Alat treba da omogući sledeće funkcionalnosti: <br>
